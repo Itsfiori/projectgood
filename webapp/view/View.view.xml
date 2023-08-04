@@ -1,0 +1,9 @@
+<mvc:View controllerName="project.goods.controller.View"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" >
+    <Page id="idPage" title="{i18n>title}">
+        
+          
+         <content />
+    </Page>
+</mvc:View>
