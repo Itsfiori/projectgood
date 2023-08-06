@@ -5,13 +5,13 @@ xmlns="sap.m"
    >
     <Table  id="idUsersTable" >
     <headerToolbar>
-    <Toolbar id="idToolbar" >
+    <Toolbar id="idToolbar1" >
     <Title id="idPankajTitle" text="pankaj"></Title>
     <Button id="idAddButton" text="add" type="Accept" press="Createuser"></Button>
     
     </Toolbar>
     </headerToolbar>
-	
+
     <columns>
     <Column id="idColumnName" >
     <Text id="idNameText"  text="name"/>
