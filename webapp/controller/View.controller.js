@@ -9,7 +9,7 @@ sap.ui.define([
 
         return Controller.extend("project.goods.controller.View", {
             onInit: function () {
-
+// alert("j")
             }
         });
     });

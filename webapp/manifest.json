@@ -78,20 +78,116 @@
       },
       "routes": [
         {
-          "name": "RouteView",
-          "pattern": ":?query:",
-          "target": [
-            "TargetView"
-          ]
+          "name": "App",
+          "pattern": "",
+          "target": "app"
+        },
+        {
+          "name": "detail",
+          "pattern": "detail",
+          "target": "detail"
+        },
+        {
+          "name": "sidenav",
+          "pattern": "sidenav",
+          "target": "sidenav"
+        },
+        {
+          "name": "dynamic",
+          "pattern": "dynamic",
+          "target": "dynamic"
+        },
+        {
+          "name": "test",
+          "pattern": "test",
+          "target": "test"
+        },
+        {
+          "name": "overview",
+          "pattern": "overview",
+          "target": "overview"
+        },
+        {
+          "name": "master",
+          "pattern": "master",
+          "target": "master"
+        },
+        {
+          "name": "questions",
+          "pattern": "questions",
+          "target": "questions"
+        },
+        {
+          "name": "vendorprice",
+          "pattern": "vendorprice",
+          "target": "vendorprice"
+        },
+        {
+          "name": "version",
+          "pattern": "version",
+          "target": "version"
+        },
+        {
+          "name": "table",
+          "pattern": "table",
+          "target": "table"
         }
       ],
       "targets": {
-        "TargetView": {
+        "app": {
           "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "View",
-          "viewName": "View"
+          "viewId": "app",
+          "viewName": "app"
+        },
+        "overview": {
+          "viewType": "XML",
+          "viewId": "overview",
+          "viewName": "overview"
+        },
+        "test": {
+          "viewType": "XML",
+          "viewId": "test",
+          "viewName": "test"
+        },
+        "dynamic": {
+          "viewType": "XML",
+          "viewId": "dynamic",
+          "viewName": "dynamic"
+        },
+        "detail": {
+          "viewType": "XML",
+          "viewId": "detail",
+          "viewName": "detail"
+        },
+        "questions": {
+          "viewType": "XML",
+          "viewId": "questions",
+          "viewName": "questions"
+        },
+        "sidenav": {
+          "viewType": "XML",
+          "viewId": "sidenav",
+          "viewName": "sidenav"
+        },
+        "vendorprice": {
+          "viewType": "XML",
+          "viewId": "vendorprice",
+          "viewName": "vendorprice"
+        },
+        "version": {
+          "viewType": "XML",
+          "viewId": "version",
+          "viewName": "version"
+        },
+        "table": {
+          "viewType": "XML",
+          "viewId": "table",
+          "viewName": "table"
+        },
+        "master": {
+          "viewType": "XML",
+          "viewId": "master",
+          "viewName": "master"
         }
       }
     },

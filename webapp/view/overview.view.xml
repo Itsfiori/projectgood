@@ -1,0 +1,54 @@
+<mvc:View
+	controllerName="project.goods.controller.overview"
+xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+   >
+    <Table  id="idUsersTable" >
+    <headerToolbar>
+    <Toolbar id="idToolbar" >
+    <Title id="idPankajTitle" text="pankaj"></Title>
+    <Button id="idAddButton" text="add" type="Accept" press="Createuser"></Button>
+    
+    </Toolbar>
+    </headerToolbar>
+	
+    <columns>
+    <Column id="idColumnName" >
+    <Text id="idNameText"  text="name"/>
+    
+    </Column>
+      <Column id="idColumn" >
+    <Text id="_IDGenText2"  text="email"/>
+    
+    </Column>
+      <Column id="_IDGenColumn3" >
+    <Text id="_IDGenText3"  text="gener"/>
+    
+    </Column>
+       <Column id="_IDGenColumdn2" >
+    <Text id="_IDGendText2"  text="status"/>
+    
+    </Column>
+
+    
+    </columns>
+    <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press="navigateToDeatils">
+    <cells>
+    <Text id="_IDGenText4"  text="jhb"></Text>
+    
+    <Text id="_IDGenText5"  text="kjhk"></Text>
+    
+    <Text id="_IDGenText6"  text="wefa"></Text>
+    
+    <Text id="_IDGenText7"  text="aef"></Text>
+    
+    </cells>
+    
+    </ColumnListItem>
+    
+    </Table>
+</mvc:View>
+
+
+
+

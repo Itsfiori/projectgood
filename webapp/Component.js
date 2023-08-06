@@ -5,9 +5,11 @@
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "project/goods/model/models"
+        "project/goods/model/models",
+        "project/goods/model/DataRepository"
+
     ],
-    function (UIComponent, Device, models) {
+    function (UIComponent, Device, models,DataRepository) {
         "use strict";
 
         return UIComponent.extend("project.goods.Component", {
@@ -23,7 +25,7 @@ sap.ui.define([
             init: function () {
                 // call the base component's init function
                 UIComponent.prototype.init.apply(this, arguments);
-
+this.DataRepository = new DataRepository(this);
                 // enable routing
                 this.getRouter().initialize();
 
