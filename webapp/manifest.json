@@ -83,9 +83,9 @@
           "target": "app"
         },
         {
-          "name": "detail",
-          "pattern": "detail",
-          "target": "detail"
+          "name": "newInvoice",
+          "pattern": "newInvoice",
+          "target": "newInvoice"
         },
         {
           "name": "sidenav",
@@ -154,10 +154,10 @@
           "viewId": "dynamic",
           "viewName": "dynamic"
         },
-        "detail": {
+        "newInvoice": {
           "viewType": "XML",
-          "viewId": "detail",
-          "viewName": "detail"
+          "viewId": "newInvoice",
+          "viewName": "newInvoice"
         },
         "questions": {
           "viewType": "XML",

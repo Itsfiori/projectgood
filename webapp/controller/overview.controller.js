@@ -4,9 +4,15 @@ sap.ui.define(
     "project/goods/model/DataRepository",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-	"sap/ui/core/Item
+	"sap/ui/core/Item",
+	"sap/ui/dom/jquery/rectContains"
   ],
-  function (Controller,Item, DataRepository, Filter, FilterOperator) {
+  function (Controller,
+	DataRepository,
+	Filter,
+	FilterOperator,
+	Item,
+	rectContains) {
     "use strict";
 
     return Controller.extend("project.goods.controller.overview", {
@@ -15,58 +21,153 @@ sap.ui.define(
         DataRepository.readUsernew();
         _sSearchTerm: "";
       },
+   
+      onExportToExcel: function () { debugger
+        var oTable = this.getView().byId("idUsersTable");
+        var aColumns = oTable.getColumns();
+  
+        var aColumnData = [];
+        aColumns.forEach(function (oColumn) {
+          var oLabel = oColumn.getLabel();
+          var oTemplate = oColumn.getTemplate();
+          var sBindingPath = oTemplate.getBindingInfo("text").binding.getPath();
+          aColumnData.push({
+            name: oLabel.getText(),
+            template: {
+              content: {
+                path: sBindingPath,
+              },
+            },
+          });
+        });
+  
+        var oExport = new Export({
+          exportType: new ExportTypeCSV({
+            separatorChar: ",",
+          }),
+          models: this.getView().getModel(),
+          rows: {
+            path: "/users",
+          },
+          columns: aColumnData,
+        });
+  
+        oExport.saveFile("UsersData").catch(function (oError) {
+          console.error("Error occurred while exporting: " + oError);
+        });
+      },
+      
       onSearch: function (oEvent) {
         var sQuery = oEvent.getParameter("query");
-        this._sSearchTerm = sQuery;
-
-        this._applyTableSearch();
-      },
-
-      // LiveChange function triggered when the user enters text in the SearchField
-      onSearchLiveChange: function (oEvent) {
-        var sQuery = oEvent.getParameter("newValue");
-        this._sSearchTerm = sQuery;
-
-        this._applyTableSearch();
-      },
-	  onSearchSuggest: function(oEvent) {
-		var sValue = oEvent.getParameter("suggestValue");
-		var aSuggestions = [];
-	  
-		// Implement your logic to provide suggestions based on the entered text (sValue)
-		// Example: Assuming you have a suggestionItems array with the suggested strings
-		suggestionItems.forEach(function(itemText) {
-		  var oItem = new Item({
-			text: itemText
-		  });
-		  aSuggestions.push(oItem);
-		});
-	  
-		var oSearchField = this.getView().byId("SearchField1");
-		oSearchField.suggest(aSuggestions);
-	  },
-      _applyTableSearch: function () {
-        var oTable = this.byId("yourTableId");
+        var oTable = this.getView().byId("idUsersTable");
         var oBinding = oTable.getBinding("items");
-        var aFilters = [];
 
-        if (this._sSearchTerm) {
-          aFilters.push(
-            new Filter("name", FilterOperator.Contains, this._sSearchTerm)
-          );
-          aFilters.push(
-            new Filter("email", FilterOperator.Contains, this._sSearchTerm)
-          );
-          aFilters.push(
-            new Filter("gender", FilterOperator.Contains, this._sSearchTerm)
-          );
-          aFilters.push(
-            new Filter("status", FilterOperator.Contains, this._sSearchTerm)
-          );
+        if (sQuery) {
+          var oFilter = new Filter({
+            filters: [
+              new Filter("name", FilterOperator.Contains, sQuery),
+              new Filter("email", FilterOperator.Contains, sQuery),
+              new Filter("gender", FilterOperator.Contains, sQuery),
+              new Filter("status", FilterOperator.Contains, sQuery),
+            ],
+            and: false,
+          });
+
+          oBinding.filter(oFilter);
+        } else {
+          oBinding.filter([]);
         }
-
-        oBinding.filter(aFilters);
       },
-    });
+
+      onSearchLiveChange: function (oEvent) {
+        var sValue = oEvent.getParameter("newValue");
+        var oTable = this.getView().byId("idUsersTable");
+        var oBinding = oTable.getBinding("items");
+
+        if (sValue) {
+          var oFilter = new Filter({
+            filters: [
+              new Filter("name", FilterOperator.Contains, sValue),
+              new Filter("email", FilterOperator.Contains, sValue),
+              new Filter("gender", FilterOperator.Contains, sValue),
+              new Filter("status", FilterOperator.Contains, sValue),
+            ],
+            and: false,
+          });
+
+          oBinding.filter(oFilter);
+        } else {
+          oBinding.filter([]);
+        }
+      },
+      onSuggest: function (event) { debugger
+        var sValue = event.getParameter("suggestValue"),
+          aFilters = [];
+        if (sValue) {
+          aFilters = [
+            new Filter([
+              new Filter("ProductId", function (sText) {
+                return (sText || "").toUpperCase().indexOf(sValue.toUpperCase()) > -1;
+              }),
+              new Filter("Name", function (sDes) {
+                return (sDes || "").toUpperCase().indexOf(sValue.toUpperCase()) > -1;
+              })
+            ], false)
+          ];
+        }
+  
+        this.oSF.getBinding("suggestionItems").filter(aFilters);
+        this.oSF.suggest();
+      },
+      onSortPress: function () {
+        var oTable = this.getView().byId("idUsersTable");
+        var oBinding = oTable.getBinding("items");
+
+        // Determine the sort order based on the current sort state
+        var bSortAscending = oBinding.aSorters.length === 0 || !oBinding.aSorters[0].bDescending;
+
+        // Create a sorter for the "Status" column with the reverse sort order
+        var oStatusSorter = new sap.ui.model.Sorter("name", !bSortAscending);
+
+        // Apply the sorter to the table binding
+        oBinding.sort(oStatusSorter);
+      },
+
+		newInvoice: function(oEvent) {
+        debugger
+        var oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("newInvoice");
+// oRouter.navTo("NewInvoice");
+
+
+
+
+		},
+    
+
+      // onSearchSuggest: function (oEvent) {
+      //   var sValue = oEvent.getParameter("suggestValue");
+      //   var aFilters = [];
+
+      //   if (sValue) {
+      //     aFilters = [
+      //       new Filter("name", FilterOperator.Contains, sValue),
+      //       new Filter("email", FilterOperator.Contains, sValue),
+      //       new Filter("gender", FilterOperator.Contains, sValue),
+      //       new Filter("status", FilterOperator.Contains, sValue),
+      //     ];
+      //   }
+
+      //   this.getView()
+      //     .byId("SearchField1")
+      //     .getBinding("suggestionItems")
+      //     .filter(aFilters);
+      // },
+      
+
+	
+    }
+   
+      );
   }
 );

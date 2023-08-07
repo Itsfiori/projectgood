@@ -1,64 +1,147 @@
 <mvc:View
 	controllerName="project.goods.controller.overview"
-xmlns="sap.m"
-    xmlns:mvc="sap.ui.core.mvc"
-   >
-
-
-  
-    <Table  id="idUsersTable"  items="{/users}">
-    <headerToolbar>
-    <Toolbar id="idToolbar1" >
-    <Title id="idPankajTitle" text="Finished Goods Review"></Title>
- 	<SearchField
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+>
+	<Shell id="Shell1">
+		<App
+			id="app"
+			class="sapUiSizeCompact"
+		>
+			<pages>
+				<Page
+					id="page"
+					title="Finished Goods Review"
+				>
+					<content>
+						<Toolbar id="toolbar">
+							<ToolbarSpacer id="toolbarSpacer"/>
+							<Button
+								activeIcon="sap-icon://Download"
+								ariaHasPopup="Grid"
+								enabled="true"
+								icon="sap-icon://Download-"
+								iconDensityAware="true"
+								iconFirst="true"
+								text="Export"
+								textDirection="Inherit"
+								type="Emphasized"
+								width=""
+								press="onExportToExcel"
+							/>
+							<Button
+								ariaHasPopup="None"
+								enabled="true"
+								icon="sap-icon://pie-chart"
+								iconDensityAware="true"
+								iconFirst="true"
+								text="New Invoice"
+								textDirection="Inherit"
+								type="Default"
+								width=""
+								press="newInvoice"
+							/>
+							<SearchField
 								id="SearchField1"
 								search=".onSearch"
-								width="200px"
+								width="500px"
 								liveChange=".onSearchLiveChange"
-								suggest=".onSearchSuggest"
-								
-							/>    
-    </Toolbar>
-	
-    </headerToolbar>
-
-    <columns>
-    <Column id="idColumn1" >
-    <Text id="idNameText"  text="Invoice Number "/>
-    
-    </Column>
-      <Column id="idColumn" >
-    <Text id="_IDGenText2"  text="Invoice Created Date"/>
-    
-    </Column>
-      <Column id="_IDGenColumn3" >
-    <Text id="_IDGenText3"  text="Supplier"/>
-    
-    </Column>
-       <Column id="_IDGenColumdn2" >
-    <Text id="_IDGendText2"  text="status"/>
-    
-    </Column>
-
-    
-    </columns>
-    <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press="navigateToDeatils">
-    <cells>
-    <Text id="_IDGenText4"  text="{name}"></Text>
-    
-    <Text id="_IDGenText5"  text="{email}"></Text>
-    
-    <Text id="_IDGenText6"  text="{gender}"></Text>
-    
-    <Text id="_IDGenText7"  text="{status}"></Text>
-    
-    </cells>
-    
-    </ColumnListItem>
-    
-    </Table>
+								suggest=".onSuggest"
+								suggestionItems="{
+									path: '/users'
+								}"
+							>
+								<SuggestionItem
+									id="idSuggestionItem"
+									text="{
+										name: ''
+									}"
+								/>
+							</SearchField>
+							<Button
+								id="sortButton"
+								icon="sap-icon://sort"
+								press=".onSortPress"
+								type="Transparent"
+							/>
+						</Toolbar>
+						<Table
+							id="idUsersTable"
+							items="{/users}"
+						>
+							<columns>
+								<Column id="idColumnName">
+									<Text
+										id="idNameText"
+										text="Invoice Number "
+									/>
+								</Column>
+								<Column id="idColumn">
+									<Text
+										id="_IDGenText2"
+										text="Invoice Created Date"
+									/>
+								</Column>
+								<Column id="_IDGenColumn3">
+									<Text
+										id="_IDGenText3"
+										text="Supplier"
+									/>
+								</Column>
+								<Column id="_IDGenColumdn2">
+									<Text
+										id="_IDGendText2"
+										text="status"
+									/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem
+									id="idColumnListItem"
+									type="Navigation"
+									press="navigateToDeatils"
+								>
+									<cells>
+										<Link
+											id="link"
+											text="{
+												name: ''
+											}"
+											press=".onload"
+											class="dig1"
+										/>
+									</cells>
+									<cells>
+										<Text
+											id="Text2"
+											text="{email}"
+										/>
+									</cells>
+									<cells>
+										<Text
+											id="Text3"
+											text="{gender}"
+										/>
+									</cells>
+									<cells>
+										<ObjectStatus
+											id="idStatusObjectStatus"
+											text="{status}"
+											state="{= ${status} === 'active' ? 'Success' : ${status} === 'inactive' ? 'Error' : 'Warning'}"
+											icon="{= ${status} === 'active' ? 'sap-icon://message-success' : ${status} === 'inactive' ? 'sap-icon://message-error' : 'sap-icon://message-warning'}"
+										/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+					<footer>
+						<Toolbar id="idToolbar">
+							<ToolbarSpacer id="ToolbarSpacer1"/>
+						</Toolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
 </mvc:View>
-
-
-
-
