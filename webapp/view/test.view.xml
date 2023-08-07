@@ -1,0 +1,49 @@
+
+  <mvc:View
+	controllerName="project.goods.controller.test"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+>
+ <SearchField
+  id="SearchField1"
+  search=".onSearch"
+  width="200px"
+  liveChange=".onSearchLiveChange"
+  suggest=".onSearchSuggest"
+>
+
+    <suggestionItems>
+      <SuggestionItem text="{name}" />
+      <SuggestionItem text="{email}" />
+      <SuggestionItem text="{gender}" />
+      <SuggestionItem text="{status}" />
+    </suggestionItems>
+  </SearchField>
+
+  <Table id="idUsersTable" items="{/data}">
+    <columns>
+      <Column>
+        <Text text="Name" />
+      </Column>
+      <Column>
+        <Text text="Email" />
+      </Column>
+      <Column>
+        <Text text="Gender" />
+      </Column>
+      <Column>
+        <Text text="Status" />
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <cells>
+          <Text text="{name}" />
+          <Text text="{email}" />
+          <Text text="{gender}" />
+          <Text text="{status}" />
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+</mvc:View>

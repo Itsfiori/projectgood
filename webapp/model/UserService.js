@@ -95,16 +95,16 @@ sap.ui.define([
 
 
     readUsernew:function(){
-alert("hello");
+      debugger
 jQuery.get({
-url:this._baseURL+'/users',
+url:this._baseUrltest+'/users',
 header: {
         Authorization: "Bearer" + this._accessToken,
       },
       success: function (aUser) {
         debugger;
               var oModel = this.getDataModel();
-              oModel.setProperty("/users", aUser.body);
+              oModel.setProperty("/users", aUser);
             }.bind(this),
           });   
       
