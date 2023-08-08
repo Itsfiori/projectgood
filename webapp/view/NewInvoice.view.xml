@@ -2,17 +2,206 @@
 	controllerName="project.goods.controller.NewInvoice"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:semantic="sap.f.semantic"
 	displayBlock="true"
 	height="100%"
 	busyIndicatorDelay="0"
 >
-<Label id="idNewinvoiceLabel" text="newinvoice"></Label>
+<Panel id="panelid">
+	<semantic:SemanticPage 
+editable="true" 
+toggleHeaderOnTitleClick="true"
+			validationMode="Async"
+			editToggled="handleEditToggled"		
+		showFooter="true"
+        	labelSpanXL="3"
+					labelSpanL="3"
+					labelSpanM="3"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="4"
+					emptySpanL="4"
+					emptySpanM="4"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="2"
+					columnsM="1"
+	>
+		<f:SimpleForm width="100%"
+			id="SimpleFormChange354"
+			editable="true"
+			layout="ColumnLayout"
+			title="New Invoice "
+			singleContainerFullSize="false" labelMinWidth="192"
+		>
+			<f:content  >
+				<Label
+					id="_IDGenLabel5"
+					text="Supplier Name"
+				/>
+				<Input
+					id="_IDGenInput1"
+					value="Supplier Name"
+				/>
+				<Label
+					id="_IDGenLabel6"
+					text="Supplier Address"
+				/>
+				<Input
+					id="_IDGenInput2"
+					value="Supplier Address"
+				/>
+				<Label
+					id="_IDGenLabel7"
+					text="Supplier city"
+				/>
+				<Input
+					id="_IDGenInput3"
+					value="Supplier city"
+				/>
+				<Label
+					id="_IDGenLabel8"
+					text="Supplier Country"
+				/>
+				<Input
+					id="_IDGenInput4"
+					value="Supplier Country"
+				/>
+				<Label
+					id="_IDGenLabel9"
+					text="Ref Invoice Number"
+				/>
+				<Input
+					id="_IDGenInput5"
+					value="Ref Invoice Number"
+				/>
+				<Label
+					id="_IDGenLabel10"
+					text="Invoice Value "
+				/>
+				<Select
+					id="_IDGenSelect3"
+					selectedKey="Invoice Value"
+				>
+					<core:Item
+						id="_IDGenItem5"
+						key="1"
+						text="8o7678"
+					/>
+					<core:Item
+						id="_IDGenItem66"
+						key="2"
+						text="225343"
+					/>
+					<core:Item
+						id="_IDGenItem6"
+						key="3"
+						text="64366"
+					/>
+					<core:Item
+						id="_IDGenItem67"
+						key="4"
+						text="8674"
+					/>
+				</Select>
+				<Label
+					id="_IDGenLabel11"
+					text="Currency "
+				/>
+				<Select
+					id="_IDGenSelect4"
+					selectedKey="{Currency }"
+				>
+					<core:Item
+						id="_IDGenItem7"
+						key="rs"
+						text="INR"
+					/>
+					<core:Item
+						id="_IDGenItem8"
+						key="uero"
+						text="EURO"
+					/>
+				</Select>
+				<Label
+					id="_IDGenLabel12"
+					text="Commodity Code"
+				/>
+				<Select
+					id="_IDGenSelect5"
+					selectedKey="{Commodity Code}"
+				>
+					<core:Item
+						id="_IDGenItem9"
+						key="123"
+						text="1001"
+					/>
+					<core:Item
+						id="_IDGenItem10"
+						key="4322"
+						text="1002"
+					/>
+				</Select>
+				<Label
+					id="_IDGenLabel13"
+					text="Material Description"
+				/>
+				<Select
+					id="_IDGenSelect6"
+					selectedKey="{Material}"
+				>
+					<core:Item
+						id="_IDGenItem11"
+						key="nice material"
+						text="desc1 "
+					/>
+					<core:Item
+						id="_IDGenItem113"
+						key="nice material"
+						text="desc2 "
+					/>
+				</Select>
+              
 
-<Input placeholder="RM/PM Supplier Name" />
-<Input placeholder="RM/PM Supplier Address" />
-<Input placeholder="RM/PM Supplier City" />
-<Input placeholder="RM/PM Supplier Country" />
-<Input placeholder="Ref Invoice Number" />
+			</f:content>
+		</f:SimpleForm>
+
+		<semantic:positiveAction>
+			<semantic:PositiveAction
+				id="_IDGenPositiveAction1"
+				text="Save"
+				press="TriggerSave"
+			/>
+		</semantic:positiveAction>
+
+		<semantic:negativeAction>
+			<semantic:NegativeAction
+				id="_IDGenNegativeAction1"
+				text="Delete"
+				visible="{isSaved}"
+				press="TriggerDelete"
+			/>
+		</semantic:negativeAction>
+	</semantic:SemanticPage>
+    </Panel>
+    	<Button
+								ariaHasPopup="None"
+								enabled="true"
+								icon="sap-icon://submit"
+								iconDensityAware="true"
+								iconFirst="true"
+								text="Buttons Submit for Buyer Review"
+								textDirection="Inherit"
+								type="Accept"
+								width=""
+								press="submit"
+							/>
+<Button text="Upload Template"   type="Accept" ></Button>
+
+<Button text="Download Template "  type="Attention"></Button>
+
 
 
 </mvc:View>

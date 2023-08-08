@@ -84,9 +84,16 @@
         },
         {
           "name": "newInvoice",
-          "pattern": "newInvoice",
-          "target": "newInvoice"
+          "pattern": "user/{user_id}",
+          "target": ["newInvoice"]
         },
+
+        {
+          "name": "Details",
+          "pattern": "user/{user_id}",
+          "target": ["Details"]
+        },
+
         {
           "name": "sidenav",
           "pattern": "sidenav",

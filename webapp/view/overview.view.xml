@@ -53,9 +53,7 @@
 							>
 								<SuggestionItem
 									id="idSuggestionItem"
-									text="{
-										name: ''
-									}"
+									text="{Invoice Number}"
 								/>
 							</SearchField>
 							<Button
@@ -65,75 +63,84 @@
 								type="Transparent"
 							/>
 						</Toolbar>
-						<Table
-							id="idUsersTable"
+					
+
+
+
+
+<Table
+		id="idUsersTable"
 							items="{/users}"
-						>
-							<columns>
-								<Column id="idColumnName">
-									<Text
-										id="idNameText"
-										text="Invoice Number "
-									/>
-								</Column>
-								<Column id="idColumn">
-									<Text
-										id="_IDGenText2"
-										text="Invoice Created Date"
-									/>
-								</Column>
-								<Column id="_IDGenColumn3">
-									<Text
-										id="_IDGenText3"
-										text="Supplier"
-									/>
-								</Column>
-								<Column id="_IDGenColumdn2">
-									<Text
-										id="_IDGendText2"
-										text="status"
-									/>
-								</Column>
-							</columns>
-							<items>
-								<ColumnListItem
-									id="idColumnListItem"
-									type="Navigation"
-									press="navigateToDeatils"
-								>
-									<cells>
-										<Link
+	>
+		<headerToolbar>
+			<Toolbar id="_IDGenToolbar1">
+				<Title
+					id="_IDGenTitle1"
+					text="Finished Goods Review"
+				/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column id="_IDGenColumn1">
+				<Text
+					id="_IDGenText1"
+					text="name"
+				/>
+			</Column>
+			<Column id="_IDGenColumn2">
+				<Text
+					id="_IDGenText2"
+					text="email"
+				/>
+			</Column>
+			<Column id="_IDGenColumn3">
+				<Text
+					id="_IDGenText3"
+					text="gener"
+				/>
+			</Column>
+			<Column id="_IDGenColumdn2">
+				<Text
+					id="_IDGendText2"
+					text="status"
+				/>
+			</Column>
+		</columns>
+		<ColumnListItem
+			id="_IDGenColumnListItem1"
+			type="Navigation"
+			press="navigateToDeatils"
+		>
+			<cells>
+			<Link
 											id="link"
-											text="{
-												name: ''
-											}"
+											text="{Invoice Number}"
 											press=".onload"
 											class="dig1"
 										/>
-									</cells>
-									<cells>
-										<Text
-											id="Text2"
-											text="{email}"
-										/>
-									</cells>
-									<cells>
-										<Text
-											id="Text3"
-											text="{gender}"
-										/>
-									</cells>
-									<cells>
+				<Text
+					 id="_IDGenText5"
+					text="{Invoice created date}"
+				/>
+				<Text
+					id="_IDGenText6"
+					text="{Supplier}"
+				/>
 										<ObjectStatus
 											id="idStatusObjectStatus"
-											text="{status}"
-											state="{= ${status} === 'active' ? 'Success' : ${status} === 'inactive' ? 'Error' : 'Warning'}"
-											icon="{= ${status} === 'active' ? 'sap-icon://message-success' : ${status} === 'inactive' ? 'sap-icon://message-error' : 'sap-icon://message-warning'}"
+											text="{Status}"
+											state="{= ${Status} === 'active' ? 'Success' : ${Status} === 'inactive' ? 'Error' : 'Warning'}"
+											icon="{= ${Status} === 'active' ? 'sap-icon://message-success' : ${Status} === 'inactive' ? 'sap-icon://message-error' : 'sap-icon://message-warning'}"
 										/>
-									</cells>
-								</ColumnListItem>
-							</items>
-						</Table>
+			</cells>
+		</ColumnListItem>
+	</Table>
+
+
+
+
+
+
 					</content>
 					<footer>
 						<Toolbar id="idToolbar">

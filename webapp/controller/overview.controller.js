@@ -4,28 +4,37 @@ sap.ui.define(
     "project/goods/model/DataRepository",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-	"sap/ui/core/Item",
-	"sap/ui/dom/jquery/rectContains"
+    "sap/ui/core/Item",
+    "sap/ui/dom/jquery/rectContains",
   ],
-  function (Controller,
-	DataRepository,
-	Filter,
-	FilterOperator,
-	Item,
-	rectContains) {
+  function (
+    Controller,
+    DataRepository,
+    Filter,
+    FilterOperator,
+    Item,
+    rectContains
+  ) {
     "use strict";
 
     return Controller.extend("project.goods.controller.overview", {
       onInit: function () {
         var DataRepository = this.getOwnerComponent().DataRepository;
         DataRepository.readUsernew();
-        _sSearchTerm: "";
       },
-   
-      onExportToExcel: function () { debugger
+      navigateToDeatils: function (oEvt) {
+        debugger;
+        var osource = oEvt.getSource(),
+          oRouter = this.getOwnerComponent().getRouter(),
+          oContext = osource.getBindingContext(),
+          sId = oContext.getProperty("Invoice Number");
+        oRouter.navTo("newInvoice", { user_id: sId });
+      },
+      onExportToExcel: function () {
+        debugger;
         var oTable = this.getView().byId("idUsersTable");
         var aColumns = oTable.getColumns();
-  
+
         var aColumnData = [];
         aColumns.forEach(function (oColumn) {
           var oLabel = oColumn.getLabel();
@@ -40,7 +49,7 @@ sap.ui.define(
             },
           });
         });
-  
+
         var oExport = new Export({
           exportType: new ExportTypeCSV({
             separatorChar: ",",
@@ -51,12 +60,12 @@ sap.ui.define(
           },
           columns: aColumnData,
         });
-  
+
         oExport.saveFile("UsersData").catch(function (oError) {
           console.error("Error occurred while exporting: " + oError);
         });
       },
-      
+
       onSearch: function (oEvent) {
         var sQuery = oEvent.getParameter("query");
         var oTable = this.getView().byId("idUsersTable");
@@ -100,22 +109,32 @@ sap.ui.define(
           oBinding.filter([]);
         }
       },
-      onSuggest: function (event) { debugger
+      onSuggest: function (event) {
+        debugger;
         var sValue = event.getParameter("suggestValue"),
           aFilters = [];
         if (sValue) {
           aFilters = [
-            new Filter([
-              new Filter("ProductId", function (sText) {
-                return (sText || "").toUpperCase().indexOf(sValue.toUpperCase()) > -1;
-              }),
-              new Filter("Name", function (sDes) {
-                return (sDes || "").toUpperCase().indexOf(sValue.toUpperCase()) > -1;
-              })
-            ], false)
+            new Filter(
+              [
+                new Filter("ProductId", function (sText) {
+                  return (
+                    (sText || "").toUpperCase().indexOf(sValue.toUpperCase()) >
+                    -1
+                  );
+                }),
+                new Filter("Name", function (sDes) {
+                  return (
+                    (sDes || "").toUpperCase().indexOf(sValue.toUpperCase()) >
+                    -1
+                  );
+                }),
+              ],
+              false
+            ),
           ];
         }
-  
+
         this.oSF.getBinding("suggestionItems").filter(aFilters);
         this.oSF.suggest();
       },
@@ -124,7 +143,8 @@ sap.ui.define(
         var oBinding = oTable.getBinding("items");
 
         // Determine the sort order based on the current sort state
-        var bSortAscending = oBinding.aSorters.length === 0 || !oBinding.aSorters[0].bDescending;
+        var bSortAscending =
+          oBinding.aSorters.length === 0 || !oBinding.aSorters[0].bDescending;
 
         // Create a sorter for the "Status" column with the reverse sort order
         var oStatusSorter = new sap.ui.model.Sorter("name", !bSortAscending);
@@ -133,41 +153,12 @@ sap.ui.define(
         oBinding.sort(oStatusSorter);
       },
 
-		newInvoice: function(oEvent) {
-        debugger
+      newInvoice: function (oEvent) {
+        debugger;
         var oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("newInvoice");
-// oRouter.navTo("NewInvoice");
-
-
-
-
-		},
-    
-
-      // onSearchSuggest: function (oEvent) {
-      //   var sValue = oEvent.getParameter("suggestValue");
-      //   var aFilters = [];
-
-      //   if (sValue) {
-      //     aFilters = [
-      //       new Filter("name", FilterOperator.Contains, sValue),
-      //       new Filter("email", FilterOperator.Contains, sValue),
-      //       new Filter("gender", FilterOperator.Contains, sValue),
-      //       new Filter("status", FilterOperator.Contains, sValue),
-      //     ];
-      //   }
-
-      //   this.getView()
-      //     .byId("SearchField1")
-      //     .getBinding("suggestionItems")
-      //     .filter(aFilters);
-      // },
-      
-
-	
-    }
-   
-      );
+        // oRouter.navTo("NewInvoice");
+      },
+    });
   }
 );

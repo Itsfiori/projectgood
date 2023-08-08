@@ -1,37 +1,32 @@
-sap.ui.define([
-
-], function (
-
-) {
+sap.ui.define([], function () {
   "use strict";
   return {
+    //     readUser1: function () {
+    //       console.log("readuser")
+    //       jQuery.get({
+    // // /dev/user?userid=einvoiceportal@gmail.com
+    //           // url: this._baseUrl + '/dev/user?userid=einvoiceportal@gmail.com',
+    //           url: this._baseUrltest + '/users',
 
-//     readUser1: function () {
-//       console.log("readuser")
-//       jQuery.get({
-// // /dev/user?userid=einvoiceportal@gmail.com
-//           // url: this._baseUrl + '/dev/user?userid=einvoiceportal@gmail.com',
-//           url: this._baseUrltest + '/users',
+    //           header: {
+    //               Authorization: 'Bearer' + this._accessToken
 
-//           header: {
-//               Authorization: 'Bearer' + this._accessToken
+    //           },
+    //           success: function (aUsers) {
+    //               debugger
+    //               var oModel = this.getDataModel(),
+    //               // oModel.setProperty("/navdata",aUser.body.tab_access);
+    //               oData = {};
+    //               aUsers.map(function(oUser){
+    //                 oData[oUser.id] = oUser;
+    //               })
 
-//           },
-//           success: function (aUsers) {
-//               debugger
-//               var oModel = this.getDataModel(),
-//               // oModel.setProperty("/navdata",aUser.body.tab_access);
-//               oData = {};
-//               aUsers.map(function(oUser){
-//                 oData[oUser.id] = oUser;
-//               })
+    //               oModel.setProperty("/users",oData);
 
-//               oModel.setProperty("/users",oData);
+    //           }.bind(this)
+    //       })
 
-//           }.bind(this)
-//       })
-
-//     },
+    //     },
 
     // readUser: function () {
     //   jQuery.get({
@@ -87,29 +82,23 @@ sap.ui.define([
     //         }.bind(this),
     //       });
 
-
-
-
     // },
 
-
-
-    readUsernew:function(){
-      debugger
-jQuery.get({
-url:this._baseUrltest+'/users',
-header: {
-        Authorization: "Bearer" + this._accessToken,
-      },
-      success: function (aUser) {
-        debugger;
-              var oModel = this.getDataModel();
-              oModel.setProperty("/users", aUser);
-            }.bind(this),
-          });   
-      
-      },
-readSingleUser:function(sUserId){},
+  readUsernew: function () {
+      debugger;
+      jQuery.get({
+        url: "https://invoicedetailss1-cheerful-impala-vz.cfapps.us20.hana.ondemand.com/invoiceHeaderDetails?createdby=XYZ",
+        header: {
+          Authorization: "Bearer" + this._accessToken,
+        },
+        success: function (aUser) {
+          debugger;
+          var oModel = this.getDataModel();
+          oModel.setProperty("/users", aUser);
+        }.bind(this),
+      });
+    },
+    readSingleUser: function (sUserId) {},
     updateUser: function (sUserId) {},
     createUser: function (oData) {},
   };
