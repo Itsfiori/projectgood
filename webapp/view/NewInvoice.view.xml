@@ -2,6 +2,7 @@
 	controllerName="project.goods.controller.NewInvoice"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
 	xmlns:core="sap.ui.core"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:semantic="sap.f.semantic"
@@ -186,14 +187,16 @@ toggleHeaderOnTitleClick="true"
 		</semantic:negativeAction>
 	</semantic:SemanticPage>
     </Panel>
+        <u:FileUploader id="fileupload" ></u:FileUploader>
+        <Button text="upload" press="onupload" icon="sap-icon://upload"></Button>
     	<Button
 								ariaHasPopup="None"
 								enabled="true"
-								icon="sap-icon://submit"
+								icon="sap-icon://Save"
 								iconDensityAware="true"
 								iconFirst="true"
 								text="Buttons Submit for Buyer Review"
-								textDirection="Inherit"
+								textDirection="LTR"
 								type="Accept"
 								width=""
 								press="submit"
