@@ -13,16 +13,13 @@ sap.ui.define(
     Filter,
     FilterOperator,
     ExportTypeCSV,
-    exportLibrary,
-    
+    exportLibrary
   ) {
     "use strict";
     var EdmType = exportLibrary.EdmType;
 
     return Controller.extend("project.goods.controller.overview", {
       onInit: function () {
-        // var EdmType = exportLibrary.EdmType;
-
         var DataRepository = this.getOwnerComponent().DataRepository;
         DataRepository.readUsernew();
       },
@@ -96,7 +93,7 @@ sap.ui.define(
         var aFilters = [];
         if (sQuery && sQuery.length > 0) {
           var oFilter = new Filter(
-            "Invoice_Number",
+            "Invoice_created_date",
             FilterOperator.Contains,
             sQuery
           );
@@ -107,7 +104,8 @@ sap.ui.define(
         oBinding.filter(aFilters);
       },
 
-      onSearchLiveChange: function (oEvent) { debugger
+      onSearchLiveChange: function (oEvent) {
+        debugger;
         var sValue = oEvent.getParameter("newValue");
         var oTable = this.getView().byId("idUsersTable");
         var oBinding = oTable.getBinding("items");
@@ -124,7 +122,6 @@ sap.ui.define(
         oBinding.filter([oMultiFilter]);
       },
 
-
       onSuggest: function (event) {
         debugger;
         var sValue = event.getParameter("suggestValue"),
@@ -133,13 +130,13 @@ sap.ui.define(
           aFilters = [
             new Filter(
               [
-                new Filter("Status", function (sText) {
+                new Filter("Invoice_created_date", function (sText) {
                   return (
                     (sText || "").toUpperCase().indexOf(sValue.toUpperCase()) >
                     -1
                   );
                 }),
-                new Filter("Name", function (sDes) {
+                new Filter("Status", function (sDes) {
                   return (
                     (sDes || "").toUpperCase().indexOf(sValue.toUpperCase()) >
                     -1

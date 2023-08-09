@@ -84,11 +84,11 @@ sap.ui.define([], function () {
 
     // },
 
-  readUsernew: function () {
+  readUsernew: function () { debugger
     
       jQuery.get({
-        url: "https://finished_goods-chatty-klipspringer-no.cfapps.us20.hana.ondemand.com/invoiceHeaderDetails?createdby=SLPAPPROVER",
-        
+        // url: _baseUrl +"/invoiceHeaderDetails?createdby=SLPAPPROVER",
+        url: this._baseUrl + "/invoiceHeaderDetails?createdby=SLPAPPROVER",
         header: {
           Authorization: "Bearer" + this._accessToken,
         },
@@ -98,7 +98,23 @@ sap.ui.define([], function () {
         }.bind(this),
       });
     },
-    readSingleUser: function (sUserId) {},
+    readsingleUser: function (sUserId) {
+      debugger
+
+      jQuery.get({
+        url: this._baseUrl + "/invoiceDetails?invoicenumber=" + sUserId,
+        header: {
+          Authorization: "Bearer" + this._accessToken,
+        },
+        success: function (aUser) {
+          var oModel = this.getDataModel();
+          oModel.setProperty("/newinvoice", aUser);
+        }.bind(this),
+      });
+
+
+
+    },
     updateUser: function (sUserId) {},
     createUser: function (oData) {},
   };

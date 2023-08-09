@@ -1,84 +1,89 @@
 <mvc:View
-	controllerName="project.goods.controller.NewInvoice"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m"
+    controllerName="project.goods.controller.NewInvoice"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
     xmlns:u="sap.ui.unified"
-	xmlns:core="sap.ui.core"
-	xmlns:f="sap.ui.layout.form"
-	xmlns:semantic="sap.f.semantic"
-	displayBlock="true"
-	height="100%"
-	busyIndicatorDelay="0"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:semantic="sap.f.semantic"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
 >
-<Panel id="panelid">
-	<semantic:SemanticPage 
-editable="true" 
-toggleHeaderOnTitleClick="true"
-			validationMode="Async"
-			editToggled="handleEditToggled"		
-		showFooter="false"
-        	labelSpanXL="3"
-					labelSpanL="3"
-					labelSpanM="3"
-					labelSpanS="12"
-					adjustLabelSpan="false"
-					emptySpanXL="4"
-					emptySpanL="4"
-					emptySpanM="4"
-					emptySpanS="0"
-					columnsXL="1"
-					columnsL="2"
-					columnsM="1"
-	>
-		<f:SimpleForm width="100%"
-			id="SimpleFormChange354"
-			editable="true"
-			layout="ColumnLayout"
-			title="New Invoice "
-			singleContainerFullSize="false" labelMinWidth="192"
-		>
-			<f:content  >
-				<Label
-					id="_IDGenLabel5"
-					text="Supplier Name"
-				/>
-				<Input
-					id="_IDGenInput1"
-					value="Supplier Name"
-				/>
-				<Label
-					id="_IDGenLabel6"
-					text="Supplier Address"
-				/>
-				<Input
-					id="_IDGenInput2"
-					value="Supplier Address"
-				/>
-				<Label
-					id="_IDGenLabel7"
-					text="Supplier city"
-				/>
-				<Input
-					id="_IDGenInput3"
-					value="Supplier city"
-				/>
-				<Label
-					id="_IDGenLabel8"
-					text="Supplier Country"
-				/>
-				<Input
-					id="_IDGenInput4"
-					value="Supplier Country"
-				/>
-				<Label
-					id="_IDGenLabel9"
-					text="Ref Invoice Number"
-				/>
-				<Input
-					id="_IDGenInput5"
-					value="Ref Invoice Number"
-				/>
-				<!-- <Label
+    <Panel
+        id="panelid"
+        items="{/newinvoice}"
+    >
+        <semantic:SemanticPage
+            editable="true"
+            toggleHeaderOnTitleClick="true"
+            validationMode="Async"
+            editToggled="handleEditToggled"
+            showFooter="false"
+            labelSpanXL="3"
+            labelSpanL="3"
+            labelSpanM="3"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="4"
+            emptySpanL="4"
+            emptySpanM="4"
+            emptySpanS="0"
+            columnsXL="1"
+            columnsL="2"
+            columnsM="1"
+        >
+            <f:SimpleForm
+                width="100%"
+                id="SimpleFormChange354"
+                editable="true"
+                layout="ColumnLayout"
+                title="New Invoice "
+                singleContainerFullSize="false"
+                labelMinWidth="192"
+            >
+                <f:content>
+                    <Label
+                        id="_IDGenLabel5"
+                        text="Supplier Name"
+                    />
+                    <Input
+                        id="_IDGenInput1"
+                        value="{REF_Invoice_Number}"
+                    />
+                    <Label
+                        id="_IDGenLabel6"
+                        text="Supplier Address"
+                    />
+                    <Input
+                        id="_IDGenInput2"
+                        value="Supplier Address"
+                    />
+                    <Label
+                        id="_IDGenLabel7"
+                        text="Supplier city"
+                    />
+                    <Input
+                        id="_IDGenInput3"
+                        value="Supplier city"
+                    />
+                    <Label
+                        id="_IDGenLabel8"
+                        text="Supplier Country"
+                    />
+                    <Input
+                        id="_IDGenInput4"
+                        value="Supplier Country"
+                    />
+                    <Label
+                        id="_IDGenLabel9"
+                        text="Ref Invoice Number"
+                    />
+                    <Input
+                        id="_IDGenInput5"
+                        value="Ref Invoice Number"
+                    />
+                    <!-- <Label
 					id="_IDGenLabel10"
 					text="Invoice Value "
 				/>
@@ -165,29 +170,28 @@ toggleHeaderOnTitleClick="true"
 					/>
 				</Select>
                -->
+                </f:content>
+            </f:SimpleForm>
 
-			</f:content>
-		</f:SimpleForm>
+            <semantic:positiveAction>
+                <semantic:PositiveAction
+                    id="_IDGenPositiveAction1"
+                    text="Save"
+                    press="TriggerSave"
+                />
+            </semantic:positiveAction>
 
-		<semantic:positiveAction>
-			<semantic:PositiveAction
-				id="_IDGenPositiveAction1"
-				text="Save"
-				press="TriggerSave"
-			/>
-		</semantic:positiveAction>
-
-		<semantic:negativeAction>
-			<semantic:NegativeAction
-				id="_IDGenNegativeAction1"
-				text="Delete"
-				visible="{isSaved}"
-				press="TriggerDelete"
-			/>
-		</semantic:negativeAction>
-	</semantic:SemanticPage>
+            <semantic:negativeAction>
+                <semantic:NegativeAction
+                    id="_IDGenNegativeAction1"
+                    text="Delete"
+                    visible="{isSaved}"
+                    press="TriggerDelete"
+                />
+            </semantic:negativeAction>
+        </semantic:SemanticPage>
     </Panel>
-        <!-- <u:FileUploader id="fileupload" ></u:FileUploader>
+    <!-- <u:FileUploader id="fileupload" ></u:FileUploader>
         <Button text="upload" press="onupload" icon="sap-icon://upload"></Button>
     	<Button
 								ariaHasPopup="None"
@@ -207,76 +211,80 @@ toggleHeaderOnTitleClick="true"
 
 	<Button	icon="sap-icon://download" press="onDataExport" /> -->
 
+    <Table
+        id="idUsersTable1"
+        width="100%" items="{/newinvoice}"
+    >
+        <headerToolbar>
+            <Toolbar
+                id="_IDGenToolbar1"
+                visible="true"
+                class="customToolbar"
+            >
+                <Button
+                    text="Submit for Buyer Review"
+                    type="Accept"
+                />
+                <Button
+                    text="Upload Template"
+                    type="Accept"
+                />
+                <Button
+                    text="Download Template"
+                    type="Accept"
+                />
+            </Toolbar>
+        </headerToolbar>
 
+        <columns>
+            <Column id="_IDGenColumn1">
+                <Text
+                    id="_IDGenText1"
+                    text="invoice Value"
+                />
+            </Column>
+            <Column id="_IDGenColumn2">
+                <Text
+                    id="_IDGenText2"
+                    text="Curency"
+                />
+            </Column>
+            <Column id="_IDGenColumn3">
+                <Text
+                    id="_IDGenText3"
+                    text="Commodity Code"
+                />
+            </Column>
+            <Column id="_IDGenColumdn2">
+                <Text
+                    id="_IDGendText2"
+                    text="code desc"
+                />
+            </Column>
+        </columns>
+        <ColumnListItem
+            editable="true"
+            id="_IDGenColumnListItem1"
+        >
+            <cells>
+                <Input
+                    value="{REF_Invoice_Number}"
+                    editable="false"
+                />
 
-<Table
-		id="idUsersTable1" width="100%"
-	>
-		<headerToolbar >
-		
-<Toolbar id="_IDGenToolbar1" visible="true" class="customToolbar">
-    <Button text="Submit for Buyer Review" type="Accept" />
-    <Button text="Upload Template" type="Accept" />
-    <Button text="Download Template" type="Accept" />
-</Toolbar>
-
-
-		</headerToolbar>
-
-<columns>
-			<Column id="_IDGenColumn1">
-				<Text
-					id="_IDGenText1"
-					text="invoice Value"
-				/>
-			</Column>
-			<Column id="_IDGenColumn2">
-				<Text
-					id="_IDGenText2"
-					text="Curency"
-				/>
-			</Column>
-			<Column id="_IDGenColumn3">
-				<Text
-					id="_IDGenText3"
-					text="Commodity Code"
-				/>
-			</Column>
-			<Column id="_IDGenColumdn2">
-				<Text
-					id="_IDGendText2"
-					text="code desc"
-				/>
-			</Column>
-		</columns>
-	<ColumnListItem  editable="true"
-			id="_IDGenColumnListItem1"
-		
-		>
-<cells>
-			<Input value="invoice value" editable="false" />
-			
-				<Text
-					 id="_IDGenText5"
-					text="a"
-				/>
-				<Text
-					id="_IDGenText6"
-					text="b"
-				/>	
-				<Text
-					id="_IDGenText7"
-					text="codedesc"
-				/>	
-</cells>
-
-
-
-
-</ColumnListItem>
-		</Table>
-
-
-
-
+                <Text
+                    id="_IDGenText5"
+                    text="a"
+                />
+                <Text
+                    id="_IDGenText6"
+                    text="b"
+                />
+                <Text
+                    id="_IDGenText7"
+                    text="codedesc"
+                />
+            </cells>
+        </ColumnListItem>
+    </Table>
 </mvc:View>

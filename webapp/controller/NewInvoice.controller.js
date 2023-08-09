@@ -11,12 +11,15 @@ sap.ui.define(
             oRouter = this.getOwnerComponent().getRouter();
           oRouter.getRoute("newInvoice").attachPatternMatched(this._showdetails.bind(this));
     
+
+          
           this.DataRepository = DataRepository;        
         },
           _showdetails: function (oEvt) {debugger
             var params = oEvt.getParameter("arguments"),
               sid = params.user_id, 
-              sPath = "/users/" + sid,
+              // https://finished_goods-chatty-klipspringer-no.cfapps.us20.hana.ondemand.com/invoiceDetails?invoicenumber=5
+              sPath = "invoiceDetails?invoicenumber=" + sid,
               oModel = this.getView().getModel(),
               oUser = oModel.getProperty(sPath);
             if (!oUser) {
