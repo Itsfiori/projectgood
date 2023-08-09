@@ -106,9 +106,11 @@ sap.ui.define([], function () {
         header: {
           Authorization: "Bearer" + this._accessToken,
         },
-        success: function (aUser) {
-          var oModel = this.getDataModel();
-          oModel.setProperty("/newinvoice", aUser);
+        success: function (oUser) {
+          var oModel = this.getDataModel(),
+          oData = oModel.getData();
+          oData[oUser.id] = oUser;
+          oModel.setProperty("/newinvoice", oUser);
         }.bind(this),
       });
 
