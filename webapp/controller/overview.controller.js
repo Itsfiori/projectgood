@@ -1,26 +1,20 @@
 sap.ui.define(
   [
     "sap/ui/core/mvc/Controller",
-    "project/goods/model/DataRepository",
     "sap/ui/core/Item",
-    "sap/ui/dom/jquery/rectContains",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
     "sap/ui/core/util/Export",
     "sap/ui/core/util/ExportTypeCSV",
-    "sap/ui/export/library",
-    "sap/ui/export/Spreadsheet",
-    "sap/ui/core/util/MockServer",
   ],
   function (
     Controller,
     Export,
+    Filter,
+    FilterOperator,
     ExportTypeCSV,
-    library,
-    Spreadsheet,
-    MockServer,
-    DataRepository,
-    Item,
     exportLibrary,
-    rectContains
+    
   ) {
     "use strict";
     var EdmType = exportLibrary.EdmType;
@@ -112,6 +106,25 @@ sap.ui.define(
 
         oBinding.filter(aFilters);
       },
+
+      onSearchLiveChange: function (oEvent) { debugger
+        var sValue = oEvent.getParameter("newValue");
+        var oTable = this.getView().byId("idUsersTable");
+        var oBinding = oTable.getBinding("items");
+
+        var aFilters = [
+          new Filter("Invoice_created_date", FilterOperator.Contains, sValue),
+        ];
+
+        var oMultiFilter = new Filter({
+          filters: aFilters,
+          and: false,
+        });
+
+        oBinding.filter([oMultiFilter]);
+      },
+
+
       onSuggest: function (event) {
         debugger;
         var sValue = event.getParameter("suggestValue"),

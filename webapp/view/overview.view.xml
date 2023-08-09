@@ -50,13 +50,14 @@
                                     width=""
                                     press="newInvoice"
                                 />
-                              <SearchField
-                    id="SearchField1"
-                    search="onSearch"
-                    liveChange="onSearchLiveChange"
-                    width="200px"
-                    placeholder="Search by Invoice Number"
-                />
+                <SearchField
+								id="SearchField1"
+								search=".onSearch"
+								width="200px"
+								liveChange=".onSearchLiveChange"
+								suggest=".onSearchSuggest"
+								
+							/>
                                 <Button
                                     id="sortButton"
                                     icon="sap-icon://sort"
@@ -97,9 +98,7 @@
                             press="navigateToDeatils"
                         >
                             <cells>
-                                <Text                                     id="_IDGenText51"
-
-                                    text="{Invoice_Number}"
+                                <Text  id="_IDGenText51" text="{Invoice_Number}"
                                     class="dig1"
                                 />
                                 <Text
