@@ -16,7 +16,7 @@ editable="true"
 toggleHeaderOnTitleClick="true"
 			validationMode="Async"
 			editToggled="handleEditToggled"		
-		showFooter="true"
+		showFooter="false"
         	labelSpanXL="3"
 					labelSpanL="3"
 					labelSpanM="3"
@@ -78,7 +78,7 @@ toggleHeaderOnTitleClick="true"
 					id="_IDGenInput5"
 					value="Ref Invoice Number"
 				/>
-				<Label
+				<!-- <Label
 					id="_IDGenLabel10"
 					text="Invoice Value "
 				/>
@@ -164,7 +164,7 @@ toggleHeaderOnTitleClick="true"
 						text="desc2 "
 					/>
 				</Select>
-              
+               -->
 
 			</f:content>
 		</f:SimpleForm>
@@ -187,7 +187,7 @@ toggleHeaderOnTitleClick="true"
 		</semantic:negativeAction>
 	</semantic:SemanticPage>
     </Panel>
-        <u:FileUploader id="fileupload" ></u:FileUploader>
+        <!-- <u:FileUploader id="fileupload" ></u:FileUploader>
         <Button text="upload" press="onupload" icon="sap-icon://upload"></Button>
     	<Button
 								ariaHasPopup="None"
@@ -204,6 +204,78 @@ toggleHeaderOnTitleClick="true"
 <Button text="Upload Template"   type="Accept" ></Button>
 
 <Button text="Download Template "  type="Attention"></Button>
+
+	<Button	icon="sap-icon://download" press="onDataExport" /> -->
+
+
+
+<Table
+		id="idUsersTable1" width="100%"
+	>
+		<headerToolbar >
+		
+<Toolbar id="_IDGenToolbar1" visible="true" class="customToolbar">
+    <Button text="Submit for Buyer Review" type="Accept" />
+    <Button text="Upload Template" type="Accept" />
+    <Button text="Download Template" type="Accept" />
+</Toolbar>
+
+
+		</headerToolbar>
+
+<columns>
+			<Column id="_IDGenColumn1">
+				<Text
+					id="_IDGenText1"
+					text="invoice Value"
+				/>
+			</Column>
+			<Column id="_IDGenColumn2">
+				<Text
+					id="_IDGenText2"
+					text="Curency"
+				/>
+			</Column>
+			<Column id="_IDGenColumn3">
+				<Text
+					id="_IDGenText3"
+					text="Commodity Code"
+				/>
+			</Column>
+			<Column id="_IDGenColumdn2">
+				<Text
+					id="_IDGendText2"
+					text="code desc"
+				/>
+			</Column>
+		</columns>
+	<ColumnListItem  editable="true"
+			id="_IDGenColumnListItem1"
+		
+		>
+<cells>
+			<Input value="invoice value" editable="false" />
+			
+				<Text
+					 id="_IDGenText5"
+					text="a"
+				/>
+				<Text
+					id="_IDGenText6"
+					text="b"
+				/>	
+				<Text
+					id="_IDGenText7"
+					text="codedesc"
+				/>	
+</cells>
+
+
+
+
+</ColumnListItem>
+		</Table>
+
 
 
 

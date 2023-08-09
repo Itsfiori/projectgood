@@ -1,154 +1,132 @@
 <mvc:View
-	controllerName="project.goods.controller.overview"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
+    controllerName="project.goods.controller.overview"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
 >
-	<Shell id="Shell1">
-		<App
-			id="app"
-			class="sapUiSizeCompact"
-		>
-			<pages>
-				<Page
-					id="page"
-					title="Finished Goods Review"
-				>
-					<content>
-						<Toolbar id="toolbar">
-							<ToolbarSpacer id="toolbarSpacer"/>
-							<Button
-								activeIcon="sap-icon://Download"
-								ariaHasPopup="Grid"
-								enabled="true"
-								icon="sap-icon://Download-"
-								iconDensityAware="true"
-								iconFirst="true"
-								text="Export"
-								textDirection="Inherit"
-								type="Emphasized"
-								width=""
-								press="onExportToExcel"
-							/>
-							<Button
-								ariaHasPopup="None"
-								enabled="true"
-								icon="sap-icon://pie-chart"
-								iconDensityAware="true"
-								iconFirst="true"
-								text="New Invoice"
-								textDirection="Inherit"
-								type="Default"
-								width=""
-								press="newInvoice"
-							/>
-							<SearchField
-								id="SearchField1"
-								search=".onSearch"
-								width="500px"
-								liveChange=".onSearchLiveChange"
-								suggest=".onSuggest"
-								suggestionItems="{
-									path: '/users'
-								}"
-							>
-								<SuggestionItem
-									id="idSuggestionItem"
-									text="{Invoice Number}"
-								/>
-							</SearchField>
-							<Button
-								id="sortButton"
-								icon="sap-icon://sort"
-								press=".onSortPress"
-								type="Transparent"
-							/>
-						</Toolbar>
-					
+    <Shell id="Shell1">
+        <App
+            id="app"
+            class="sapUiSizeCompact"
+        >
+            <pages>
+                <Page
+                    id="page"
+                    title="Finished Goods Review"
+                >
+                    <Table
+                        id="idUsersTable"
+                        items="{/users}"
+                    >
+                        <headerToolbar>
+                            <ToolbarSpacer id="toolbarSpacer" />
+                            <Toolbar
+                                class="customToolbar"
+                                id="toolbar"
+                            >
+                                <Button
+                                    id="_IDGenButton1"
+                                    activeIcon="sap-icon://Download"
+                                    ariaHasPopup="Grid"
+                                    enabled="true"
+                                    iconDensityAware="true"
+                                    iconFirst="true"
+                                    text="Export"
+                                    textDirection="Inherit"
+                                    type="Emphasized"
+                                    width=""
+                                    icon="sap-icon://download"
+                                    press="onExportToExcel"
+                                />
+                                <Button
+                                    id="_IDGenButton3"
+                                    ariaHasPopup="None"
+                                    enabled="true"
+                                    icon="sap-icon://Address"
+                                    iconDensityAware="true"
+                                    iconFirst="true"
+                                    text="New Invoice"
+                                    textDirection="Inherit"
+                                    type="Default"
+                                    width=""
+                                    press="newInvoice"
+                                />
+                              <SearchField
+                    id="SearchField1"
+                    search="onSearch"
+                    liveChange="onSearchLiveChange"
+                    width="200px"
+                    placeholder="Search by Invoice Number"
+                />
+                                <Button
+                                    id="sortButton"
+                                    icon="sap-icon://sort"
+                                    press=".onSortPress"
+                                    type="Transparent"
+                                />
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column id="_IDGenColumn1">
+                                <Text
+                                    id="_IDGenText1"
+                                    text="Invoice Number"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn2">
+                                <Text
+                                    id="_IDGenText2"
+                                    text="Invoice created date"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumn3">
+                                <Text
+                                    id="_IDGenText3"
+                                    text="Supplier"
+                                />
+                            </Column>
+                            <Column id="_IDGenColumdn2">
+                                <Text
+                                    id="_IDGendText2"
+                                    text="Status"
+                                />
+                            </Column>
+                        </columns>
+                        <ColumnListItem
+                            id="_IDGenColumnListItem1"
+                            type="Navigation"
+                            press="navigateToDeatils"
+                        >
+                            <cells>
+                                <Text                                     id="_IDGenText51"
 
-
-
-
-<Table
-		id="idUsersTable"
-							items="{/users}"
-	>
-		<headerToolbar>
-			<Toolbar id="_IDGenToolbar1">
-				<Title
-					id="_IDGenTitle1"
-					text="Finished Goods Review"
-				/>
-			</Toolbar>
-		</headerToolbar>
-		<columns>
-			<Column id="_IDGenColumn1">
-				<Text
-					id="_IDGenText1"
-					text="name"
-				/>
-			</Column>
-			<Column id="_IDGenColumn2">
-				<Text
-					id="_IDGenText2"
-					text="email"
-				/>
-			</Column>
-			<Column id="_IDGenColumn3">
-				<Text
-					id="_IDGenText3"
-					text="gener"
-				/>
-			</Column>
-			<Column id="_IDGenColumdn2">
-				<Text
-					id="_IDGendText2"
-					text="status"
-				/>
-			</Column>
-		</columns>
-		<ColumnListItem
-			id="_IDGenColumnListItem1"
-			type="Navigation"
-			press="navigateToDeatils"
-		>
-			<cells>
-			<Link
-											id="link"
-											text="{Invoice Number}"
-											press=".onload"
-											class="dig1"
-										/>
-				<Text
-					 id="_IDGenText5"
-					text="{Invoice created date}"
-				/>
-				<Text
-					id="_IDGenText6"
-					text="{Supplier}"
-				/>
-										<ObjectStatus
-											id="idStatusObjectStatus"
-											text="{Status}"
-											state="{= ${Status} === 'active' ? 'Success' : ${Status} === 'inactive' ? 'Error' : 'Warning'}"
-											icon="{= ${Status} === 'active' ? 'sap-icon://message-success' : ${Status} === 'inactive' ? 'sap-icon://message-error' : 'sap-icon://message-warning'}"
-										/>
-			</cells>
-		</ColumnListItem>
-	</Table>
-
-
-
-
-
-
-					</content>
-					<footer>
-						<Toolbar id="idToolbar">
-							<ToolbarSpacer id="ToolbarSpacer1"/>
-						</Toolbar>
-					</footer>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+                                    text="{Invoice_Number}"
+                                    class="dig1"
+                                />
+                                <Text
+                                    id="_IDGenText5"
+                                    text="{Invoice_created_date}"
+                                />
+                                <Text
+                                    id="_IDGenText6"
+                                    text="{Supplier}"
+                                />
+                                <ObjectStatus
+                                    id="idStatusObjectStatus"
+                                    text="{Status}"
+                                    state="{= ${Status} === 'active' ? 'Success' : ${Status} === 'inactive' ? 'Error' : 'Warning'}"
+                                    icon="{= ${Status} === 'active' ? 'sap-icon://message-success' : ${Status} === 'inactive' ? 'sap-icon://message-error' : 'sap-icon://message-warning'}"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </Table>
+                    <footer>
+                        <Toolbar id="idToolbar">
+                            <ToolbarSpacer id="ToolbarSpacer1" />
+                        </Toolbar>
+                    </footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
 </mvc:View>
+

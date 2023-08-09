@@ -85,16 +85,16 @@ sap.ui.define([], function () {
     // },
 
   readUsernew: function () {
-      debugger;
+    
       jQuery.get({
-        url: "https://invoicedetailss1-cheerful-impala-vz.cfapps.us20.hana.ondemand.com/invoiceHeaderDetails?createdby=XYZ",
+        url: "https://finished_goods-chatty-klipspringer-no.cfapps.us20.hana.ondemand.com/invoiceHeaderDetails?createdby=SLPAPPROVER",
+        
         header: {
           Authorization: "Bearer" + this._accessToken,
         },
         success: function (aUser) {
-          debugger;
           var oModel = this.getDataModel();
-          oModel.setProperty("/users", aUser);
+          oModel.setProperty("/users", aUser.data);
         }.bind(this),
       });
     },
