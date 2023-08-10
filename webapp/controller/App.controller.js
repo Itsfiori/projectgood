@@ -7,7 +7,18 @@ sap.ui.define(
   
       return BaseController.extend("project.goods.controller.App", {
         onInit() {
-        }
+        },
+      onLoginPress :function(){
+        var oRouter = this.getOwnerComponent().getRouter();
+        console.log("onOpen");
+        oRouter.navTo("overview");
+
+
+      }
+
+
+
+
       });
     }
   );
