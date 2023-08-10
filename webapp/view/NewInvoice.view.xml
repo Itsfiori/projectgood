@@ -49,7 +49,7 @@
                         value="{Supplier_Address}"
                     />
                     <Label
-                        id="_IDGenLabel7"
+                        id="idSupplierCityLabel"
                         text="Supplier city"
                     />
                     <Input
@@ -96,29 +96,9 @@
             </semantic:negativeAction>
         </semantic:SemanticPage>
     </Panel>
-    <!-- <u:FileUploader id="fileupload" ></u:FileUploader>
-        <Button text="upload" press="onupload" icon="sap-icon://upload"></Button>
-    	<Button
-								ariaHasPopup="None"
-								enabled="true"
-								icon="sap-icon://Save"
-								iconDensityAware="true"
-								iconFirst="true"
-								text="Buttons Submit for Buyer Review"
-								textDirection="LTR"
-								type="Accept"
-								width=""
-								press="submit"
-							/>
-<Button text="Upload Template"   type="Accept" ></Button>
-
-<Button text="Download Template "  type="Attention"></Button>
-
-	<Button	icon="sap-icon://download" press="onDataExport" /> -->
-
     <Table
         id="idUsersTable1"
-        width="100%" items="{/newinvoice}"
+        width="100%" items="{/item}"
     >
         <headerToolbar>
             <Toolbar
