@@ -23,24 +23,14 @@
             labelSpanL="3" 
             labelSpanM="3"
             labelSpanS="12"
-            adjustLabelSpan="false"
-            emptySpanXL="4"
-            emptySpanL="4"
-            emptySpanM="4"
-            emptySpanS="0"
-            columnsXL="1"
-            columnsL="2"
-            columnsM="1"
         >
-			<VBox class="sapUiSmallMargin" items="{/newinvoice}" id="vBox">
+			<VBox  items="{/newinvoice}" id="vBox" renderType="Bare">
             <f:SimpleForm 
-                width="100%" 
                 id="SimpleFormChange354"
                 editable="true"
                 layout="ColumnLayout"
                 title="New Invoice "
                 singleContainerFullSize="true"
-                labelMinWidth="50"
             >
                 <f:content>
                     <Label
@@ -178,29 +168,54 @@
                 />
             </Column>
         </columns>
-        <ColumnListItem
-            editable="true"
-            id="_IDGenColumnListItem1"
-        >
-            <cells>
-                <Input
-                    value="{REF_Invoice_Number}"
-                    editable="false"
-                />
+      	<items>
+									<ColumnListItem id="_IDGenColumnListItem1">
+                                      	<cells>
+											<ComboBox id="idCountryComboBox21" visible="true"
+												change="onCountryComboBoxChange"
+												placeholder="INVOICE CODE">
+												<items>
+													<core:Item id="idValue2Ite2m" text="code 1 "/>
+                                                    <core:Item id="idValue2It121em" text="code 2"/>
+												</items>
+											</ComboBox>
+										</cells>
+											<cells>
+											<ComboBox id="idCountryComboBox2" visible="true"
+												change="onCountryComboBoxChange"
+												placeholder="Currency  "
+												
+											>
+												<items>
+													<core:Item id="idValue2IteWm" text="INR"/>
+                                                    <core:Item id="idValue2It1em" text="ERO"/>
 
-                <Text
-                    id="_IDGenText5"
-                    text="a"
-                />
-                <Text
-                    id="_IDGenText6"
-                    text="b"
-                />
-                <Text
-                    id="_IDGenText7"
-                    text="codedesc"
-                />
-            </cells>
-        </ColumnListItem>
+												</items>
+											</ComboBox>
+										</cells>
+										<cells>
+											<ComboBox id="idCountryComboBox" visible="true"
+												change="onCountryComboBoxChange"
+												placeholder="Commodity Code">
+												<items>
+													<core:Item id="idValue2Item" text="value2"/>
+												</items>
+											</ComboBox>
+										</cells>
+										<cells>
+												<ComboBox id="idCountryComboBox4" visible="true"
+												change="onCountryComboBoxChange"
+												placeholder="code desc  "
+												
+											>
+												<items>
+													<core:Item id="idValue2IteWmq" text=" INR rupee"/>
+                                                    <core:Item id="idValueq2It1em" text="ERO desc"/>
+
+												</items>
+											</ComboBox>
+										</cells>
+									</ColumnListItem>
+								</items>
     </Table>
 </mvc:View>

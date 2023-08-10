@@ -18,7 +18,6 @@ sap.ui.define(
           _showdetails: function (oEvt) {debugger
             var params = oEvt.getParameter("arguments"),
               sid = params.user_id, 
-              // https://finished_goods-chatty-klipspringer-no.cfapps.us20.hana.ondemand.com/invoiceDetails?invoicenumber=5
               sPath = "invoiceDetails?invoicenumber=" + sid,
               oModel = this.getView().getModel(),
               oUser = oModel.getProperty(sPath);

@@ -1,49 +1,206 @@
-
-  <mvc:View
-	controllerName="project.goods.controller.test"
-  xmlns="sap.m"
-  xmlns:mvc="sap.ui.core.mvc"
+<mvc:View
+    controllerName="project.goods.controller.test"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:semantic="sap.f.semantic"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
 >
- <SearchField
-  id="SearchField1"
-  search=".onSearch"
-  width="200px"
-  liveChange=".onSearchLiveChange"
-  suggest=".onSearchSuggest"
->
+    <Panel
+        id="panelid"
+    >
+        <semantic:SemanticPage
+            editable="true"
+            toggleHeaderOnTitleClick="true"
+            validationMode="Async"
+            editToggled="handleEditToggled"
+            showFooter="false"
+            labelSpanXL="3"
+            labelSpanL="3" 
+            labelSpanM="3"
+            labelSpanS="12"
+        >
+			<VBox  items="{/newinvoice}" id="vBox" renderType="Bare">
+            <f:SimpleForm 
+                id="SimpleFormChange354"
+                editable="true"
+                layout="ColumnLayout"
+                title="New Invoice "
+                singleContainerFullSize="true"
+            >
+                <f:content>
+                    <Label
+                        id="_IDGenLabel5"
+                        text="Supplier Name"
+                    />
+                    <Input
+                        id="_IDGenInput1"
+                        value="{Supplier_Name}"
+                    />
+                    <Label
+                        id="_IDGenLabel6"
+                        text="Supplier Address"
+                    />
+                    <Input
+                        id="_IDGenInput2"
+                        value="{Supplier_Address}"
+                    />
+                    <Label
+                        id="_IDGenLabel7"
+                        text="Supplier city"
+                    />
+                    <Input
+                        id="_IDGenInput3"
+                        value="{Supplier_City}"
+                    />
+                    <Label
+                        id="_IDGenLabel8"
+                        text="Supplier Country"
+                    />
+                    <Input
+                        id="_IDGenInput4"
+					value="{Supplier_Country}"
+                    />
+                    <Label
+                        id="_IDGenLabel9"
+                        text="Ref Invoice Number"
+                    />
+                    <Input
+                        id="_IDGenInput5"
+                        value="{REF_Invoice_Number}"
+                    />
+                
+               
+                </f:content>
+            </f:SimpleForm>
+	</VBox>
 
-    <suggestionItems>
-      <SuggestionItem text="{name}" />
-      <SuggestionItem text="{email}" />
-      <SuggestionItem text="{gender}" />
-      <SuggestionItem text="{status}" />
-    </suggestionItems>
-  </SearchField>
+            <semantic:positiveAction>
+                <semantic:PositiveAction
+                    id="_IDGenPositiveAction1"
+                    text="Save"
+                    press="TriggerSave"
+                />
+            </semantic:positiveAction>
 
-  <Table id="idUsersTable" items="{/data}">
-    <columns>
-      <Column>
-        <Text text="Name" />
-      </Column>
-      <Column>
-        <Text text="Email" />
-      </Column>
-      <Column>
-        <Text text="Gender" />
-      </Column>
-      <Column>
-        <Text text="Status" />
-      </Column>
-    </columns>
-    <items>
-      <ColumnListItem>
-        <cells>
-          <Text text="{name}" />
-          <Text text="{email}" />
-          <Text text="{gender}" />
-          <Text text="{status}" />
-        </cells>
-      </ColumnListItem>
-    </items>
-  </Table>
+            <semantic:negativeAction>
+                <semantic:NegativeAction
+                    id="_IDGenNegativeAction1"
+                    text="Delete"
+                    visible="{isSaved}"
+                    press="TriggerDelete"
+                />
+            </semantic:negativeAction>
+        </semantic:SemanticPage>
+    </Panel>
+    <!-- <u:FileUploader id="fileupload" ></u:FileUploader>
+        <Button text="upload" press="onupload" icon="sap-icon://upload"></Button>
+    	<Button
+								ariaHasPopup="None"
+								enabled="true"
+								icon="sap-icon://Save"
+								iconDensityAware="true"
+								iconFirst="true"
+								text="Buttons Submit for Buyer Review"
+								textDirection="LTR"
+								type="Accept"
+								width=""
+								press="submit"
+							/>
+<Button text="Upload Template"   type="Accept" ></Button>
+
+<Button text="Download Template "  type="Attention"></Button>
+
+	<Button	icon="sap-icon://download" press="onDataExport" /> -->
+
+    <Table
+        id="idUsersTable1"
+        width="100%"
+    >
+        <headerToolbar>
+            <Toolbar
+                id="_IDGenToolbar1"
+                visible="true"
+                class="customToolbar"
+            >
+                <Button
+                    text="Submit for Buyer Review"
+                    type="Accept"
+                />
+                <Button
+                    text="Upload Template"
+                    type="Accept"
+                />
+                <Button
+                    text="Download Template"
+                    type="Accept"
+                />
+            </Toolbar>
+        </headerToolbar>
+
+        <columns>
+            <Column id="_IDGenColumn1">
+                <Text
+                    id="_IDGenText1"
+                    text="invoice Value"
+                />
+            </Column>
+            <Column id="_IDGenColumn2">
+                <Text
+                    id="_IDGenText2"
+                    text="Curency"
+                />
+            </Column>
+            <Column id="_IDGenColumn3">
+                <Text
+                    id="_IDGenText3"
+                    text="Commodity Code"
+                />
+            </Column>
+            <Column id="_IDGenColumdn2">
+                <Text
+                    id="_IDGendText2"
+                    text="code desc"
+                />
+            </Column>
+        </columns>
+        <ColumnListItem
+            editable="true"
+            id="_IDGenColumnListItem1"
+        >
+            <cells>
+                <Input
+                    value="{REF_Invoice_Number}"
+                    editable="false"
+                />
+
+                <Text
+                    id="_IDGenText5"
+                    text="a"
+                />
+                <Text
+                    id="_IDGenText6"
+                    text="b"
+                />
+                <Text
+                    id="_IDGenText7"
+                    text="codedesc"
+                />
+             
+											<ComboBox id="idCountryComboBox" visible="true"
+												change="onCountryComboBoxChange"
+												placeholder="Compnay Code"
+												
+											>
+												<items>
+													<core:Item id="idValue2Item" text="value2"/>
+												</items>
+											</ComboBox>
+            </cells>
+        </ColumnListItem>
+    </Table>
 </mvc:View>
