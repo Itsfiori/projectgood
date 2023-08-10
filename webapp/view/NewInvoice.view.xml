@@ -11,9 +11,8 @@
     busyIndicatorDelay="0"
 >
     <Panel
-        id="panelid"
-    >
-        <semantic:SemanticPage
+        id="panelid">
+        <semantic:SemanticPage id="semantic"
             editable="true"
             toggleHeaderOnTitleClick="true"
             validationMode="Async"
@@ -24,7 +23,7 @@
             labelSpanM="3"
             labelSpanS="12"
         >
-			<VBox  items="{/newinvoice}" id="vBox" renderType="Bare">
+			<VBox  id="vBox" renderType="Bare">
             <f:SimpleForm 
                 id="SimpleFormChange354"
                 editable="true"

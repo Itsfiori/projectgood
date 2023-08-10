@@ -17,20 +17,23 @@ sap.ui.define(
         },
           _showdetails: function (oEvt) {debugger
             var params = oEvt.getParameter("arguments"),
-              sid = params.user_id, 
-              sPath = "invoiceDetails?invoicenumber=" + sid,
-              oModel = this.getView().getModel(),
-              oUser = oModel.getProperty(sPath);
-            if (!oUser) {
-                this.DataRepository.readsingleUser(sid);
-            }
+              sid = params.user_id;
+              var url = 'https://finished_goods-chatty-klipspringer-no.cfapps.us20.hana.ondemand.com/invoiceDetails?invoicenumber='+sid;
+              fetch(url).then(res => res.json()).then(res => {
+                var dataModel = new sap.ui.model.json.JSONModel();
+                dataModel.setData(res);
+                // this.getView().setModel(dataModel, "oJSONModel")
+                this.getView().setModel(dataModel);
+  
+  
+        this.getView().bindElement("/header");
       
-            this._bindView(sPath); 
-          },
-          _bindView: function(sPath){
-            this.getView().bindElement(sPath)
+               
+              });
+          
       
           },
+        
       });
     }
   );
