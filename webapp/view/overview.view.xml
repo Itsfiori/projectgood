@@ -46,9 +46,9 @@
                                     iconFirst="true"
                                     text="New Invoice"
                                     textDirection="Inherit"
-                                    type="Default"
+                                    type="Emphasized"
                                     width=""
-                                    press="newInvoice"
+                                    press="navigateToDeatils"
                                 />
                 <SearchField
 								id="SearchField1"

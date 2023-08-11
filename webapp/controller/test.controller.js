@@ -23,6 +23,29 @@
             );
           },
       
+
+          onGenerateExcelPress: function() { debugger
+            var oModel = this.getView().getModel(); // Get your model
+        
+            var data = [
+                ["Supplier Name", "Supplier Address", "Supplier City", "Supplier Country", "Ref Invoice Number"],
+                [
+                    oModel.getProperty("/Supplier_Name"),
+                    oModel.getProperty("/Supplier_Address"),
+                    oModel.getProperty("/Supplier_City"),
+                    oModel.getProperty("/Supplier_Country"),
+                    oModel.getProperty("/REF_Invoice_Number")
+                ]
+            ];
+        
+            var ws = XLSX.utils.aoa_to_sheet(data);
+            var wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Invoice Data");
+        
+            // Generate the XLSX file and trigger download
+            XLSX.writeFile(wb, "invoice_data.xlsx");
+        },
+
           handleEditPress : function () {
 alert("K")
             //Clone the data

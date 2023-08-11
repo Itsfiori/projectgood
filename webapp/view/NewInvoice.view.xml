@@ -12,7 +12,7 @@
 >
     <Panel
         id="panelid">
-        <semantic:SemanticPage id="semantic"
+        <semantic:SemanticPage id="semantic" 
             editable="true"
             toggleHeaderOnTitleClick="true"
             validationMode="Async"
@@ -28,7 +28,7 @@
                 id="SimpleFormChange354"
                 editable="true"
                 layout="ColumnLayout"
-                title="New Invoice "
+                title="Invoice "
                 singleContainerFullSize="true"
             >
                 <f:content>
@@ -106,18 +106,19 @@
                 visible="true"
                 class="customToolbar"
             >
-                <Button
+
+                <Button 
                     text="Submit for Buyer Review"
                     type="Accept"
                 />
                 <Button
                     text="Upload Template"
-                    type="Accept"
-                />
+                  type="Accept" press="onUploadTemplatePress"/>
+                
                 <Button
                     text="Download Template"
                     type="Accept"
-                />
+                press="onGenerateExcelPress" />
             </Toolbar>
         </headerToolbar>
 
@@ -154,8 +155,10 @@
 												change="onCountryComboBoxChange"
 												placeholder="INVOICE CODE">
 												<items>
-													<core:Item id="idValue2Ite2m" text="code 1 "/>
-                                                    <core:Item id="idValue2It121em" text="code 2"/>
+													<core:Item id="idValue2Ite2m" text="1 "/>
+                                                    <core:Item id="idValue2It121em" text="2"/>
+                                                    <core:Item id="idValue2Ite3m" text="3 "/>
+                                                    <core:Item id="idValue2It14em" text="4"/>
 												</items>
 											</ComboBox>
 										</cells>
