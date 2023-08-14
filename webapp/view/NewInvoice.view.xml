@@ -11,17 +11,10 @@
     busyIndicatorDelay="0"
 >
     <Panel
-        id="panelid">
+        id="panelid">   
         <semantic:SemanticPage id="semantic" 
-            editable="true"
             toggleHeaderOnTitleClick="true"
-            validationMode="Async"
-            editToggled="handleEditToggled"
             showFooter="false"
-            labelSpanXL="3"
-            labelSpanL="3" 
-            labelSpanM="3"
-            labelSpanS="12"
         >
 			<VBox  id="vBox" renderType="Bare">
             <f:SimpleForm 
@@ -102,20 +95,21 @@
     >
         <headerToolbar>
             <Toolbar
-                id="_IDGenToolbar1"
+                id="idToolbar"
                 visible="true"
                 class="customToolbar"
             >
 
-                <Button 
+                <Button id="_IDGenButton1" 
                     text="Submit for Buyer Review"
                     type="Accept"
+                    press=".onsubmit"
                 />
-                <Button
+                <Button id="_IDGenButton2"
                     text="Upload Template"
                   type="Accept" press="onUploadTemplatePress"/>
                 
-                <Button
+                <Button id="_IDGenButton3"
                     text="Download Template"
                     type="Accept"
                 press="onGenerateExcelPress" />
@@ -154,11 +148,9 @@
 											<ComboBox id="idCountryComboBox21" visible="true"
 												change="onCountryComboBoxChange"
 												placeholder="INVOICE CODE">
-												<items>
-													<core:Item id="idValue2Ite2m" text="1 "/>
-                                                    <core:Item id="idValue2It121em" text="2"/>
-                                                    <core:Item id="idValue2Ite3m" text="3 "/>
-                                                    <core:Item id="idValue2It14em" text="4"/>
+												<items >
+													<core:Item id="idValue2Ite2m" text="{Comodity_Code}"/>
+                                           
 												</items>
 											</ComboBox>
 										</cells>
@@ -169,8 +161,7 @@
 												
 											>
 												<items>
-													<core:Item id="idValue2IteWm" text="INR"/>
-                                                    <core:Item id="idValue2It1em" text="ERO"/>
+													<core:Item id="idValue2IteWm" text="{Currency}"/>
 
 												</items>
 											</ComboBox>
@@ -180,7 +171,9 @@
 												change="onCountryComboBoxChange"
 												placeholder="Commodity Code">
 												<items>
-													<core:Item id="idValue2Item" text="value2"/>
+													<core:Item id="idValue2Item1" text="{Invoice_Value}"/>
+                                                  
+
 												</items>
 											</ComboBox>
 										</cells>
@@ -191,8 +184,8 @@
 												
 											>
 												<items>
-													<core:Item id="idValue2IteWmq" text=" INR rupee"/>
-                                                    <core:Item id="idValueq2It1em" text="ERO desc"/>
+													<core:Item id="idValue2IteWmq" text="{Material_Description}"/>
+                                                  
 
 												</items>
 											</ComboBox>
