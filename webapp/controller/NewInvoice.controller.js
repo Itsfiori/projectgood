@@ -47,12 +47,7 @@ if (supplierName !== null) {
 }
 
 
-// for item
 
-// var dataModel_items = new sap.ui.model.json.JSONModel();
-// dataModel_items.setData(res);
-// this.getView().setModel(dataModel_items);
-// this.getView().bindElement("/item");
 
 
 

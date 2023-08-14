@@ -32,7 +32,7 @@
                     columnsM="1"
                     singleContainerFullSize="false"
                 >
-                    <f:content  >
+                    <f:content id="formid" >
                         <Label
                             id="_IDGenLabel1"
                             text="Name"
