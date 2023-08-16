@@ -1,5 +1,6 @@
 <mvc:View
-    controllerName="project.goods.controller.NewInvoice"
+
+	controllerName="project.goods.controller.CreateInvoice"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:u="sap.ui.unified"
@@ -31,15 +32,15 @@
                     />
                     <Input
                         id="_IDGenInput1"
-                        value="{Supplier_Name}"
+                        placeholder="Supplier_Name"
                     />
                     <Label
                         id="_IDGenLabel6"
-                        text="Supplier Address"
                     />
                     <Input
                         id="_IDGenInput2"
-                        value="{Supplier_Address}"
+                        placeholder ="Supplier Address"
+
                     />
                     <Label
                         id="idSupplierCityLabel"
@@ -47,7 +48,7 @@
                     />
                     <Input
                         id="_IDGenInput3"
-                        value="{Supplier_City}"
+                        placeholder="Supplier_City"
                     />
                     <Label
                         id="_IDGenLabel8"
@@ -55,7 +56,7 @@
                     />
                     <Input
                         id="_IDGenInput4"
-					value="{Supplier_Country}"
+					placeholder="Supplier_Country"
                     />
                     <Label
                         id="_IDGenLabel9"
@@ -63,7 +64,7 @@
                     />
                     <Input
                         id="_IDGenInput5"
-                        value="{REF_Invoice_Number}"
+                        placeholder="REF_Invoice_Number"
                     />
                 
                
@@ -152,7 +153,7 @@
                                       	<cells>
 											<ComboBox id="idCountryComboBox21" visible="true"
 												change="onCountryComboBoxChange"
-												placeholder="{Comodity_Code}">
+												placeholder="INVOICE CODE">
 												<items >
 													<core:Item id="idValue2Ite2m" text="{Comodity_Code}"/>
                                            
@@ -162,7 +163,7 @@
 											<cells>
 											<ComboBox id="idCountryComboBox2" visible="true"
 												change="onCountryComboBoxChange"
-												placeholder="{Currency}  "
+												placeholder="Currency  "
 												
 											>
 												<items>
@@ -174,7 +175,7 @@
 										<cells>
 											<ComboBox id="idCountryComboBox" visible="true"
 												change="onCountryComboBoxChange"
-												placeholder="{Invoice_Value}">
+												placeholder="Commodity Code">
 												<items>
 													<core:Item id="idValue2Item1" text="{Invoice_Value}"/>
                                                   
@@ -185,7 +186,7 @@
 										<cells>
 												<ComboBox id="idCountryComboBox4" visible="true"
 												change="onCountryComboBoxChange"
-												placeholder="{Material_Description}"
+												placeholder="code desc  "
 												
 											>
 												<items>

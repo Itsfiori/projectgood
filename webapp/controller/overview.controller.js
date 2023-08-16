@@ -334,6 +334,16 @@ sap.ui.define(
         XLSX.utils.book_append_sheet(oWorkbook, oSheet, "Sheet1");
         XLSX.writeFile(oWorkbook, "exported_data.xlsx");
       },
+
+		navigateToCreateInvoice: function(oEvent) {
+			
+      var oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("CreateInvoice");
+  
+
+
+
+		},
     });
   }
 );

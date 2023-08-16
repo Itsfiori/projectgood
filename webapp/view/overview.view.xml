@@ -48,7 +48,7 @@
                                     textDirection="Inherit"
                                     type="Emphasized"
                                     width=""
-                                    press="navigateToDeatils"
+                                    press="navigateToCreateInvoice"
                                 />
                 <SearchField
 								id="SearchField1"

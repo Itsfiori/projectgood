@@ -84,20 +84,20 @@
         },
         {
           "name": "newInvoice",
-          "pattern": "user/{user_id}",
+          "pattern": "invoice/{user_id}",
           "target": ["newInvoice"]
         },
 
         {
           "name": "Details",
-          "pattern": "user/{user_id}",
+          "pattern": "invoice/{user_id}",
           "target": ["Details"]
         },
 
         {
-          "name": "sidenav",
-          "pattern": "sidenav",
-          "target": "sidenav"
+          "name": "CreateInvoice",
+          "pattern": "CreateInvoice",
+          "target": "CreateInvoice"
         },
         {
           "name": "dynamic",
@@ -171,10 +171,10 @@
           "viewId": "questions",
           "viewName": "questions"
         },
-        "sidenav": {
+        "CreateInvoice": {
           "viewType": "XML",
-          "viewId": "sidenav",
-          "viewName": "sidenav"
+          "viewId": "CreateInvoice",
+          "viewName": "CreateInvoice"
         },
         "vendorprice": {
           "viewType": "XML",

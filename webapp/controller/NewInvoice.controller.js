@@ -4,11 +4,10 @@ sap.ui.define(
     "sap/m/Dialog", // Import Dialog control
     "sap/m/Button", // Import Button control
     "sap/ui/unified/FileUploader", // Import FileUploader control
-    'sap/ui/model/Filter',
-    'sap/ui/model/json/JSONModel'
-
+    "sap/ui/model/Filter",
+    "sap/ui/model/json/JSONModel",
   ],
-  function (BaseController, Dialog,Filter, Button,JSONModel, FileUploader) {
+  function (BaseController, Dialog, Filter, Button, JSONModel, FileUploader) {
     "use strict";
 
     return BaseController.extend("project.goods.controller.NewInvoice", {
@@ -86,21 +85,34 @@ sap.ui.define(
         oDialog.open();
       },
 
-      onsubmit:function(){
-        debugger
-        var dataObject = { 
-            SupplierName: "",
-            REF_Invoice_Number: "",
-			Supplier_Address: "",
-			Supplier_City: ""
-          };
-          var oModel = this.getView().getModel(); 
-          var oProperty = oModel.getProperty("/");
-          alert(JSON.stringify(oProperty));
+      onsubmit: function () {
+        debugger;
+        var randomNumber = Math.floor(Math.random() * 100000);
+        var invoiceNumbernew = { invoiceNum: randomNumber };
 
+        var oModel = this.getView().getModel();
+        var oProperty = oModel.getProperty("/");
+        oModel.getProperty("/header/REF_Invoice_Number"),
+          oModel.getProperty("/header/Supplier_Name"),
+          oModel.getProperty("/header/Supplier_Address"),
+          oModel.getProperty("/header/Supplier_City"),
+          oModel.getProperty("/header/Supplier_Country"),
+          oModel.getProperty("/item/0/Comodity_Code"),
+          oModel.getProperty("/item/0/Currency"),
+          oModel.getProperty("/item/0/Invoice_Value"),
+          oModel.getProperty("/item/0/Material_Description");
+
+        var dataObject = {
+          SupplierName: oModel.getProperty("/header/Supplier_Name"),
+          REF_Invoice_Number: oModel.getProperty("/header/REF_Invoice_Number"),
+          Supplier_Address: oModel.getProperty("/header/Supplier_Address"),
+          Supplier_City: oModel.getProperty("/header/Supplier_City"),
+          Status: "pending",
+          invoiceNumbernew,
+        };
+
+        alert(JSON.stringify(oProperty));
       },
-
-
 
       onGenerateExcelPress: function () {
         debugger;
@@ -116,8 +128,7 @@ sap.ui.define(
             "Comodity_Code",
             "Currency",
             "Invoice_Value",
-            "Material_Description"
-
+            "Material_Description",
           ],
           [
             oModel.getProperty("/header/REF_Invoice_Number"),
@@ -129,10 +140,6 @@ sap.ui.define(
             oModel.getProperty("/item/0/Currency"),
             oModel.getProperty("/item/0/Invoice_Value"),
             oModel.getProperty("/item/0/Material_Description"),
-
-
-
-          
           ],
         ];
 
