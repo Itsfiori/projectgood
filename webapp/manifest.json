@@ -125,9 +125,9 @@
           "target": "questions"
         },
         {
-          "name": "vendorprice",
-          "pattern": "vendorprice",
-          "target": "vendorprice"
+          "name": "BuyerOverview",
+          "pattern": "BuyerOverview",
+          "target": "BuyerOverview"
         },
         {
           "name": "version",
@@ -176,10 +176,10 @@
           "viewId": "CreateInvoice",
           "viewName": "CreateInvoice"
         },
-        "vendorprice": {
+        "BuyerOverview": {
           "viewType": "XML",
-          "viewId": "vendorprice",
-          "viewName": "vendorprice"
+          "viewId": "BuyerOverview",
+          "viewName": "BuyerOverview"
         },
         "version": {
           "viewType": "XML",

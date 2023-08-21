@@ -1,0 +1,13 @@
+<mvc:View
+	controllerName="project.goods.controller.BuyerOverview"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+<Label id="idLabel" 
+
+text="{osmodel>/name}"></Label>
+</mvc:View>
