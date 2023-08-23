@@ -3,11 +3,12 @@ sap.ui.define(
     "sap/ui/core/mvc/Controller",
     "sap/m/Dialog", // Import Dialog control
     "sap/m/Button", // Import Button control
-    "sap/ui/unified/FileUploader", // Import FileUploader control
+    "sap/ui/unified/FileUploader",
+    "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/json/JSONModel",
   ],
-  function (BaseController, Dialog, Filter, Button, JSONModel, FileUploader) {
+  function (BaseController, Dialog, Filter, Button,MessageBox, JSONModel, FileUploader) {
     "use strict";
 
     return BaseController.extend("project.goods.controller.NewInvoice", {
@@ -53,21 +54,26 @@ sap.ui.define(
 
       onUploadTemplatePress: function () {
         debugger;
-        var oFileUploader = new sap.ui.unified.FileUploader({
+        var FileUploader = new sap.ui.unified.FileUploader({
           name: "fileUploader",
-          uploadUrl: "https://httpbin.org/post", // Replace with your actual upload URL
+          uploadUrl: "https://cgi-lib.berkeley.edu/ex/fup.cgi",
           uploadComplete: function (oEvent) {
             var sResponse = oEvent.getParameter("response");
+            if (oEvent.getParameter("status") === 200) { debugger
+              MessageBox.success("Project 1234567 was created and assigned to team \"ABC\".");
+            } else {
+              MessageBox.error("File upload failed.");
+            }
           },
         });
 
         var oDialog = new sap.m.Dialog({
           title: "Upload Template",
-          content: oFileUploader,
+          content: [FileUploader],
           beginButton: new sap.m.Button({
             text: "Upload",
             press: function () {
-              oFileUploader.upload();
+              FileUploader.upload();
               oDialog.close();
             },
           }),
@@ -150,6 +156,73 @@ sap.ui.define(
         // Generate the XLSX file and trigger download
         XLSX.writeFile(wb, "invoice_data.xlsx");
       },
-    });
+      onUploadPress: function () {
+        var that = this;
+        var fileUploader = new sap.ui.unified.FileUploader({
+          uploadUrl: "https://cgi-lib.berkeley.edu/ex/fup.cgi",
+          uploadComplete: function (oEvent) {
+            if (oEvent.getParameter("status") === 200) {
+              alert("File uploaded successfully.");
+            } else {
+              alert("File upload failed.");
+            }
+  
+          }
+        });
+  
+        var dialog = new sap.m.Dialog({
+          title: "Upload XML File",
+          content: [fileUploader],
+          beginButton: new sap.m.Button({
+            text: "Upload",
+            press: function () { debugger
+              var file = fileUploader.oFileUpload.files[0];
+              
+              if (file) {
+                var formData = new FormData();
+                formData.append("upfile", file);
+  
+                jQuery.ajax({
+                  url: "https://cgi-lib.berkeley.edu/ex/fup.cgi",
+                  type: "POST",
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (data) {
+                    MessageBox.success("File uploaded successfully.");
+                    dialog.close();
+                  },
+                  error: function (xhr, status, error) {
+                    MessageBox.error("File upload failed: " + error);
+                  }
+                });
+              } else {
+                MessageBox.error("Please select a file to upload.");
+              }
+            }
+          }),
+          endButton: new sap.m.Button({
+            text: "Cancel",
+            press: function () {
+              dialog.close();
+            }
+          }),
+          afterClose: function () {
+            dialog.destroy();
+          }
+        });
+  
+        dialog.open();
+      },
+
+
+
+
+    }
+    
+    
+    
+    
+    );
   }
 );

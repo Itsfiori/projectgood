@@ -118,6 +118,17 @@
                     type="Emphasized"
                     icon="sap-icon://download"
                 press="onGenerateExcelPress" />
+
+  
+  <VBox>
+    <Button text="Upload XML File" press="onUploadPress" />
+  </VBox>  
+
+
+
+
+
+                
             </Toolbar>
         </headerToolbar>
 

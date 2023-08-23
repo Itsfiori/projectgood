@@ -47,6 +47,7 @@
         "sap.ushell": {}
       }
     },
+
     "contentDensities": {
       "compact": true,
       "cozy": true
@@ -82,6 +83,7 @@
           "pattern": "",
           "target": "app"
         },
+
         {
           "name": "newInvoice",
           "pattern": "invoice/{user_id}",
@@ -100,9 +102,9 @@
           "target": "CreateInvoice"
         },
         {
-          "name": "dynamic",
-          "pattern": "dynamic",
-          "target": "dynamic"
+          "name": "ShowApprovedInvoices",
+          "pattern": "ShowApprovedInvoices",
+          "target": "ShowApprovedInvoices"
         },
         {
           "name": "test",
@@ -156,10 +158,10 @@
           "viewId": "test",
           "viewName": "test"
         },
-        "dynamic": {
+        "ShowApprovedInvoices": {
           "viewType": "XML",
-          "viewId": "dynamic",
-          "viewName": "dynamic"
+          "viewId": "ShowApprovedInvoices",
+          "viewName": "ShowApprovedInvoices"
         },
         "newInvoice": {
           "viewType": "XML",
