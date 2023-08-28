@@ -9,7 +9,7 @@
     displayBlock="true"
     height="100%"
     busyIndicatorDelay="0"
->
+ >
     <Panel
         id="panelid">   
         <semantic:SemanticPage id="semantic" 
@@ -31,7 +31,7 @@
                     />
                     <Input
                         id="_IDGenInput1"
-                        value="{Supplier_Name}"
+                        value="{/Supplier Name}"
                     />
                     <Label
                         id="_IDGenLabel6"

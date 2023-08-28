@@ -1,8 +1,8 @@
 sap.ui.define(
   [
     "sap/ui/core/mvc/Controller",
-    "sap/m/Dialog", // Import Dialog control
-    "sap/m/Button", // Import Button control
+    "sap/m/Dialog",
+    "sap/m/Button", 
     "sap/ui/unified/FileUploader",
     "sap/m/MessageBox",
     "sap/ui/model/Filter",

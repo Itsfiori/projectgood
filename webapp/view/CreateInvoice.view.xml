@@ -11,35 +11,41 @@
     height="100%"
     busyIndicatorDelay="0"
 >
-    <Panel
-        id="panelid">   
-        <semantic:SemanticPage id="semantic" 
+    <Panel items="{myModel>/}"
+        id="panelid" >   
+       
+        <semantic:SemanticPage  id="semantic" 
             toggleHeaderOnTitleClick="true"
             showFooter="false"
         >
-			<VBox  id="vBox" renderType="Bare">
+			<VBox  id="vBox"  renderType="Bare" >
             <f:SimpleForm 
                 id="SimpleFormChange354"
                 editable="true"
                 layout="ColumnLayout"
-                title="Invoice "
+                title="Create New"
                 singleContainerFullSize="true"
             >
-                <f:content>
+                <f:content >
                     <Label
                         id="_IDGenLabel5"
                         text="Supplier Name"
                     />
                     <Input
                         id="_IDGenInput1"
-                        placeholder="Supplier_Name"
+                        placeholder="{/Currency}"
+                        value="{/Currency}"
+
                     />
                     <Label
                         id="_IDGenLabel6"
+                        text="Supplier Address"
+
                     />
                     <Input
                         id="_IDGenInput2"
-                        placeholder ="Supplier Address"
+                        placeholder ="{/Supplier Address}"
+                        value="{/Supplier Address}"
 
                     />
                     <Label
@@ -48,7 +54,8 @@
                     />
                     <Input
                         id="_IDGenInput3"
-                        placeholder="Supplier_City"
+                        placeholder="{/Supplier City}"
+                        value="{/Supplier City}"
                     />
                     <Label
                         id="_IDGenLabel8"
@@ -56,7 +63,8 @@
                     />
                     <Input
                         id="_IDGenInput4"
-					placeholder="Supplier_Country"
+					placeholder="{/Supplier_Country}"
+                    value="{/Supplier_Country}"
                     />
                     <Label
                         id="_IDGenLabel9"
@@ -64,8 +72,9 @@
                     />
                     <Input
                         id="_IDGenInput5"
-                        placeholder="REF_Invoice_Number"
-                    />
+                        placeholder="{/REF_Invoice_Number}"
+                        value="{/REF_Invoice_Number}"
+                             />
                 
                
                 </f:content>
@@ -89,7 +98,21 @@
                 />
             </semantic:negativeAction>
         </semantic:SemanticPage>
+
+
+						<Bar id="idBar">
+							
+							<contentRight>
+								<u:FileUploader id="FileUploaderId" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"
+									icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"/>
+
+
+                                    
+							</contentRight>
+						</Bar>
+
     </Panel>
+    
     <Table
         id="idUsersTable1"
         width="100%" items="{/item}"
@@ -108,11 +131,12 @@
                      icon="sap-icon://accept"
 
                 />
-                <Button id="_IDGenButton2"
-                    text="Upload Template"
-                  type="Emphasized" press="onUploadTemplatePress"
-                   icon="sap-icon://upload"
-/>
+               
+  <Button id="_IDGenButton4"
+                    text="Download Template"
+                    type="Emphasized"
+                    icon="sap-icon://upload"
+                press=".onUpload" />
                 
                 <Button id="_IDGenButton3"
                     text="Download Template"
