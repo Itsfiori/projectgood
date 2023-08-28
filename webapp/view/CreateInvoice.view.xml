@@ -34,7 +34,7 @@
                     <Input
                         id="_IDGenInput1"
                         placeholder="{/Currency}"
-                        value="{/Currency}"
+                        value="{/Supplier Name}"
 
                     />
                     <Label
